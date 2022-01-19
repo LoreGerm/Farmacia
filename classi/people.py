@@ -12,9 +12,9 @@ class Physician:
         self.physician_details = physician_details
         self.id = last_id + 1 
         if isinstance(prescription, Prescription):
-            self.prescription.append(prescription.model_to_dict())
+            self.prescription.append(prescription)
         if isinstance(address, Address):
-            self.address = address.model_to_dict()
+            self.address = address
 
     def get_physician_details(self):
         return self.physician_details
@@ -30,13 +30,13 @@ class Physician:
         return self.address
     def set_address(self,address):
         if isinstance(address, Address):
-            self.address = address.model_to_dict()
+            self.address = address
 
     def get_prescription(self):
         return self.prescription
     def set_prescription(self,prescription):
         if isinstance(prescription, Prescription):
-            self.prescription.append(prescription.model_to_dict())
+            self.prescription.append(prescription)
 
     def model_to_dict(self):
         d = [self.get_id(),self.get_address(),self.get_prescription(),self.get_physician_details()]
@@ -63,29 +63,29 @@ class Customer:
         self.date_became_customer = date_became_customer
         self.other_customer_details = other_customer_details  # Opzionale
         if isinstance(address, Address):
-            self.address = address.model_to_dict()
+            self.address = address
         if isinstance(prescription, Prescription):
-            self.prescription.append(prescription.model_to_dict())
+            self.prescription.append(prescription)
         if isinstance(credit_card, Credit_card):
-            self.credit_card = credit_card.model_to_dict()
+            self.credit_card = credit_card
 
     def get_credit_card(self):
         return self.credit_card_number
     def set_credit_card(self,credit_card):
         if isinstance(credit_card, Credit_card):
-            self.credit_card = credit_card.model_to_dict()
+            self.credit_card = credit_card
 
     def get_address(self):
         return self.address
     def set_address(self,address):
         if isinstance(address, Address):
-            self.address = address.model_to_dict()
+            self.address = address
 
     def get_prescription(self):
         return self.prescription
     def set_prescription(self,prescription):
         if isinstance(prescription, Prescription):
-            self.prescription.append(prescription.model_to_dict())
+            self.prescription.append(prescription)
 
     def get_id(self):
         return self.id

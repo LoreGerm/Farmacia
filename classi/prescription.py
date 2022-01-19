@@ -14,11 +14,11 @@ class Prescription():
     def __init__(self,last_id,payment_method,status,item,issued_date,filled_date,other_details):
         self.id = last_id + 1
         if isinstance(payment_method, Ref_Payment_Methods):
-            self.payment_method = payment_method.model_to_dict()
+            self.payment_method = payment_method
         if isinstance(status, Ref_Prescription_Status):
-            self.status = status.model_to_dict()
+            self.status = status
         if isinstance(item, Prescription_items):
-            self.item.append(item.model_to_dict())
+            self.item.append(item)
         self.issued_date = issued_date
         self.filled_date = filled_date
         self.other_details = other_details
@@ -27,19 +27,19 @@ class Prescription():
         return self.payment_method
     def set_payment_method(self,payment_method):
         if isinstance(payment_method, Ref_Payment_Methods):
-            self.payment_method = payment_method.model_to_dict()
+            self.payment_method = payment_method
     
     def get_status(self):
         return self.status
     def set_status(self,status):
         if isinstance(status, Ref_Prescription_Status):
-            self.status = status.model_to_dict()
+            self.status = status
         
     def get_item(self):
         return self.item
     def set_item(self,item):
         if isinstance(item, Prescription_items):
-            self.item.append(item.model_to_dict())
+            self.item.append(item)
 
     def get_id(self):
         return self.id
@@ -76,7 +76,7 @@ class Prescription_items:
     def __init__(self,last_id,drug,quantity,instruction_to_customers):
         self.id = last_id + 1
         if isinstance(drug, Drug_and_Medication):
-            self.drug.append(drug.model_to_dict())
+            self.drug.append(drug)
         self.quantity = quantity
         self.instruction_to_customers = instruction_to_customers
 
@@ -99,7 +99,7 @@ class Prescription_items:
         return self.drug
     def set_drug(self,drug):
         if isinstance(drug, Drug_and_Medication):
-            self.drug.append(drug.model_to_dict())
+            self.drug.append(drug)
 
     def model_to_dict(self):
         d = [self.get_id(),self.get_drug(),self.get_quantity(),self.get_instruction_to_customers()]

@@ -2,7 +2,9 @@ from classi.drug import Drug_and_Medication,Drug_company
 
 
 dm = Drug_and_Medication(0,0,0,0,0,0,0,0,0)
+dm1 = Drug_and_Medication(1,0,0,0,0,0,0,0,0)
 dc = Drug_company(0,0,0,dm)
+dc.set_drugs(dm1)
 
 print(dc.get_drugs())
 

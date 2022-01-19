@@ -86,7 +86,7 @@ class Drug_company:
         self.name = name
         self.details = details
         if isinstance(drugs, Drug_and_Medication):
-            self.drugs.append(drugs.model_to_dict())
+            self.drugs.append(drugs)
 
     def get_id(self):
         return self.id
@@ -107,7 +107,7 @@ class Drug_company:
         return self.drugs
     def set_drugs(self,drugs):
         if isinstance(drugs, Drug_and_Medication):
-            self.drugs.append(drugs.model_to_dict())
+            self.drugs.append(drugs)
 
     def model_to_dict(self):
         d = [self.get_id(),self.get_name(),self.get_details(),self.get_drugs()]
