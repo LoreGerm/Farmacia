@@ -79,14 +79,14 @@ class Drug_company:
     id = 0
     name = ""
     details = ""
-    drugs = None   # OBJ Drug_and_Medication
+    drugs = []   # OBJ Drug_and_Medication
 
     def __init__(self,last_id,name,details,drugs):
         self.id = last_id + 1
         self.name = name
         self.details = details
         if isinstance(drugs, Drug_and_Medication):
-            self.drugs = drugs.model_to_dict()
+            self.drugs.append(drugs.model_to_dict())
 
     def get_id(self):
         return self.id
@@ -107,7 +107,7 @@ class Drug_company:
         return self.drugs
     def set_drugs(self,drugs):
         if isinstance(drugs, Drug_and_Medication):
-            self.drugs = drugs.model_to_dict()
+            self.drugs.append(drugs.model_to_dict())
 
     def model_to_dict(self):
         d = [self.get_id(),self.get_name(),self.get_details(),self.get_drugs()]

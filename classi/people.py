@@ -5,14 +5,14 @@ from classi.prescription import Credit_card, Prescription
 class Physician:
     id = 0
     address = None   # OBJ Address
-    prescription = None   # OBJ Prescription
+    prescription = []   # OBJ Prescription
     physician_details = ""
 
     def __init__(self,address,physician_details,last_id,prescription):
         self.physician_details = physician_details
         self.id = last_id + 1 
         if isinstance(prescription, Prescription):
-            self.prescription = prescription.model_to_dict()
+            self.prescription.append(prescription.model_to_dict())
         if isinstance(address, Address):
             self.address = address.model_to_dict()
 
@@ -36,7 +36,7 @@ class Physician:
         return self.prescription
     def set_prescription(self,prescription):
         if isinstance(prescription, Prescription):
-            self.prescription = prescription.model_to_dict()
+            self.prescription.append(prescription.model_to_dict())
 
     def model_to_dict(self):
         d = [self.get_id(),self.get_address(),self.get_prescription(),self.get_physician_details()]
@@ -49,7 +49,7 @@ class Physician:
 class Customer:
     id = 0
     address = None  # OBJ Address
-    prescription = None   # OBJ Prescription
+    prescription = []   # OBJ Prescription
     credit_card = None    # OBJ Credit_card
     name = ""
     surname = ""
@@ -65,7 +65,7 @@ class Customer:
         if isinstance(address, Address):
             self.address = address.model_to_dict()
         if isinstance(prescription, Prescription):
-            self.prescription = prescription.model_to_dict()
+            self.prescription.append(prescription.model_to_dict())
         if isinstance(credit_card, Credit_card):
             self.credit_card = credit_card.model_to_dict()
 
@@ -85,7 +85,7 @@ class Customer:
         return self.prescription
     def set_prescription(self,prescription):
         if isinstance(prescription, Prescription):
-            self.prescription = prescription.model_to_dict()
+            self.prescription.append(prescription.model_to_dict())
 
     def get_id(self):
         return self.id
