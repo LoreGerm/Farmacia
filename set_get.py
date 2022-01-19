@@ -1,15 +1,17 @@
-from classi.prescription import *
+from classi.drug import Drug_and_Medication,Drug_company
 
 
+dm = Drug_and_Medication(0,0,0,0,0,0,0,0,0)
+dc = Drug_company(0,0,0,dm)
 
-p = Cash(0)
+print(dc.get_drugs())
 
-
+'''
 cont = 0
 
 for attr in p.__dict__:
     print("\t def get_"+attr+"(self):")
-    print("\t\t return self."+attr)
+    print("\t\treturn self."+attr)
     if attr == "id":
         print("\t def set_id(self,last_id):")
         print("\t\tself.id = last_id + 1")
@@ -19,7 +21,6 @@ for attr in p.__dict__:
     print("\n")
     cont += 1
 
-
 print(cont)
 
-
+'''

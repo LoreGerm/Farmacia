@@ -60,6 +60,9 @@ class Address:
     def set_other_address_details(self,other_address_details):
         self.other_address_details = other_address_details
 
+    def model_to_dict(self):
+        d = [self.get_id(),self.get_via(),self.get_number(),self.get_city(),self.get_postcode(),self.get_province(),self.get_country(),self.get_other_address_details()]
+        return d
     
 
 

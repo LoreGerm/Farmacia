@@ -12,9 +12,9 @@ class Physician:
         self.physician_details = physician_details
         self.id = last_id + 1 
         if isinstance(prescription, Prescription):
-            self.prescription = prescription
+            self.prescription = prescription.model_to_dict()
         if isinstance(address, Address):
-            self.address = address
+            self.address = address.model_to_dict()
 
     def get_physician_details(self):
         return self.physician_details
@@ -30,14 +30,17 @@ class Physician:
         return self.address
     def set_address(self,address):
         if isinstance(address, Address):
-            self.address = address
+            self.address = address.model_to_dict()
 
     def get_prescription(self):
         return self.prescription
     def set_prescription(self,prescription):
         if isinstance(prescription, Prescription):
-            self.prescription = prescription
+            self.prescription = prescription.model_to_dict()
 
+    def model_to_dict(self):
+        d = [self.get_id(),self.get_address(),self.get_prescription(),self.get_physician_details()]
+        return d
 
 
 
@@ -51,36 +54,38 @@ class Customer:
     name = ""
     surname = ""
     date_became_customer = ""
-    credit_card_number = 0
-    card_expiry_date = 0
     other_customer_details = ""
 
-    def __init__(self,credit_card,prescription,last_id,name,date_became_customer,credit_card_number,card_expiry_date,other_customer_details,address,surname):
+    def __init__(self,credit_card,prescription,last_id,name,date_became_customer,other_customer_details,address,surname):
         self.id = last_id + 1
         self.name = name
         self.surname = surname
         self.date_became_customer = date_became_customer
-        self.credit_card_number = credit_card_number
-        self.card_expiry_date = card_expiry_date
         self.other_customer_details = other_customer_details  # Opzionale
         if isinstance(address, Address):
-            self.address = address
+            self.address = address.model_to_dict()
         if isinstance(prescription, Prescription):
-            self.prescription = prescription
+            self.prescription = prescription.model_to_dict()
         if isinstance(credit_card, Credit_card):
-            self.credit_card = credit_card
+            self.credit_card = credit_card.model_to_dict()
+
+    def get_credit_card(self):
+        return self.credit_card_number
+    def set_credit_card(self,credit_card):
+        if isinstance(credit_card, Credit_card):
+            self.credit_card = credit_card.model_to_dict()
 
     def get_address(self):
         return self.address
     def set_address(self,address):
         if isinstance(address, Address):
-            self.address = address
+            self.address = address.model_to_dict()
 
     def get_prescription(self):
         return self.prescription
     def set_prescription(self,prescription):
         if isinstance(prescription, Prescription):
-            self.prescription = prescription
+            self.prescription = prescription.model_to_dict()
 
     def get_id(self):
         return self.id
@@ -102,20 +107,14 @@ class Customer:
     def set_date_became_customer(self,date_became_customer):
         self.date_became_customer = date_became_customer
 
-    def get_credit_card_number(self):
-            return self.credit_card_number
-    def set_credit_card_number(self,credit_card_number):
-        self.credit_card_number = credit_card_number
-
-    def get_card_expiry_date(self):
-            return self.card_expiry_date
-    def set_card_expiry_date(self,card_expiry_date):
-        self.card_expiry_date = card_expiry_date
-
     def get_other_customer_details(self):
             return self.other_customer_details
     def set_other_customer_details(self,other_customer_details):
         self.other_customer_details = other_customer_details
+
+    def model_to_dict(self):
+        d = [self.get_id(),self.get_name(),self.get_surname(),self.get_address(),self.get_prescription(),self.get_date_became_customer(),self.get_credit_card_number(),self.get_other_customer_details()]
+        return d
     
 
 

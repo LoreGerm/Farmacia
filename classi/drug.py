@@ -68,6 +68,10 @@ class Drug_and_Medication:
     def set_other_details(self,other_details):
         self.other_details = other_details
 
+    def model_to_dict(self):
+        d = [self.get_id(),self.get_name(),self.get_cost(),self.get_available_date(),self.get_withdraw_date(),self.get_description(),self.get_generic_yn(),self.get_generic_equivalent_drug_id(),self.get_other_details()]
+        return d
+
 
 
 
@@ -82,7 +86,7 @@ class Drug_company:
         self.name = name
         self.details = details
         if isinstance(drugs, Drug_and_Medication):
-            self.drugs = drugs
+            self.drugs = drugs.model_to_dict()
 
     def get_id(self):
         return self.id
@@ -103,4 +107,8 @@ class Drug_company:
         return self.drugs
     def set_drugs(self,drugs):
         if isinstance(drugs, Drug_and_Medication):
-            self.drugs = drugs
+            self.drugs = drugs.model_to_dict()
+
+    def model_to_dict(self):
+        d = [self.get_id(),self.get_name(),self.get_details(),self.get_drugs()]
+        return d
