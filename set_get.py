@@ -1,10 +1,15 @@
 from classi.drug import Drug_and_Medication,Drug_company
+from classi.fun import *
+
+
+
 
 
 dm = Drug_and_Medication(0,0,0,0,0,0,0,0,0)
 dm1 = Drug_and_Medication(1,0,0,0,0,0,0,0,0)
-dc = Drug_company(0,0,0,dm)
-dc.set_drugs(dm1)
+d = [dm,dm1]
+
+dc = Drug_company(0,0,0,d)
 
 print(dc.get_drugs())
 

@@ -1,4 +1,4 @@
-
+from classi.fun import is_obj
 
 
 class Drug_and_Medication:
@@ -85,8 +85,7 @@ class Drug_company:
         self.id = last_id + 1
         self.name = name
         self.details = details
-        if isinstance(drugs, Drug_and_Medication):
-            self.drugs.append(drugs)
+        self.drugs.append(is_obj(drugs,Drug_and_Medication))
 
     def get_id(self):
         return self.id
@@ -106,8 +105,7 @@ class Drug_company:
     def get_drugs(self):
         return self.drugs
     def set_drugs(self,drugs):
-        if isinstance(drugs, Drug_and_Medication):
-            self.drugs.append(drugs)
+        self.drugs.append(is_obj(drugs,Drug_and_Medication))
 
     def model_to_dict(self):
         d = [self.get_id(),self.get_name(),self.get_details(),self.get_drugs()]
