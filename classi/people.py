@@ -36,7 +36,12 @@ class Physician:
         self.prescription.append(is_obj(prescription,Prescription))
 
     def model_to_dict(self):
-        d = [self.get_id(),self.get_address(),self.get_prescription(),self.get_physician_details()]
+        d = {
+            "physician id": self.get_id(),
+            "address": self.get_address(),              # CONTROLLA
+            "prescription": self.get_prescription(),    # CONTROLLA
+            "details": self.get_physician_details()
+        }
         return d
 
 
@@ -104,7 +109,16 @@ class Customer:
         self.other_customer_details = other_customer_details
 
     def model_to_dict(self):
-        d = [self.get_id(),self.get_name(),self.get_surname(),self.get_address(),self.get_prescription(),self.get_date_became_customer(),self.get_credit_card_number(),self.get_other_customer_details()]
+        d = {
+            "customer id": self.get_id(),
+            "name": self.get_name(),
+            "surname": self.get_surname(),
+            "address": self.get_address(),              # CONTROLLA
+            "prescription": self.get_prescription(),    # CONTROLLA
+            "date became customers": self.get_date_became_customer(),
+            "credit card": self.get_credit_card(),      # CONTROLLA
+            "other details": self.get_other_customer_details()
+        }
         return d
     
 

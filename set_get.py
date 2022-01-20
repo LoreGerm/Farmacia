@@ -11,7 +11,7 @@ d = [dm,dm1]
 
 dc = Drug_company(0,0,0,d)
 
-print(dc.get_drugs())
+print(dc.model_to_dict())
 
 '''
 cont = 0

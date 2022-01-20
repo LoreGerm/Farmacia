@@ -61,7 +61,16 @@ class Address:
         self.other_address_details = other_address_details
 
     def model_to_dict(self):
-        d = [self.get_id(),self.get_via(),self.get_number(),self.get_city(),self.get_postcode(),self.get_province(),self.get_country(),self.get_other_address_details()]
+        d = {
+            "address id": self.get_id(),
+            "via": self.get_via(),
+            "number": self.get_number(),
+            "city": self.get_city(),
+            "postcode": self.get_postcode(),
+            "province": self.get_province(),
+            "country": self.get_country(),
+            "other details": self.get_other_address_details()
+        }
         return d
     
 

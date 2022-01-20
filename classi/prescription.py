@@ -1,5 +1,6 @@
 from multiprocessing.sharedctypes import Value
 from classi.drug import Drug_and_Medication
+from classi.fun import is_obj
 
 
 class Prescription():
@@ -13,12 +14,9 @@ class Prescription():
 
     def __init__(self,last_id,payment_method,status,item,issued_date,filled_date,other_details):
         self.id = last_id + 1
-        if isinstance(payment_method, Ref_Payment_Methods):
-            self.payment_method = payment_method
-        if isinstance(status, Ref_Prescription_Status):
-            self.status = status
-        if isinstance(item, Prescription_items):
-            self.item.append(item)
+        self.payment_method = is_obj(payment_method,Ref_Payment_Methods)
+        self.status = is_obj(status,Ref_Prescription_Status)
+        self.item.append(is_obj(item,Prescription_items))
         self.issued_date = issued_date
         self.filled_date = filled_date
         self.other_details = other_details
@@ -26,20 +24,17 @@ class Prescription():
     def get_payment_method(self):
         return self.payment_method
     def set_payment_method(self,payment_method):
-        if isinstance(payment_method, Ref_Payment_Methods):
-            self.payment_method = payment_method
+        self.payment_method = is_obj(payment_method,Ref_Payment_Methods)
     
     def get_status(self):
         return self.status
     def set_status(self,status):
-        if isinstance(status, Ref_Prescription_Status):
-            self.status = status
+        self.status = is_obj(status,Ref_Prescription_Status)
         
     def get_item(self):
         return self.item
     def set_item(self,item):
-        if isinstance(item, Prescription_items):
-            self.item.append(item)
+        self.item.append(is_obj(item,Prescription_items))
 
     def get_id(self):
         return self.id
@@ -62,7 +57,15 @@ class Prescription():
         self.other_details = other_details
 
     def model_to_dict(self):
-        d = [self.get_id(),self.get_item(),self.get_status(),self.get_payment_method(),self.get_issued_date(),self.get_filled_date(),self.get_other_details()]
+        d = {
+            "prescription id": self.get_id(), 
+            "item": self.get_item(),    # CONTROLLA
+            "status": self.get_status(),    # CONTROLLA
+            "payment method": self.get_payment_method(),    # CONTROLLA
+            "issued date": self.get_issued_date(),
+            "filled date": self.get_filled_date(),
+            "other details": self.get_other_details()
+        }
         return d
     
 
@@ -75,8 +78,7 @@ class Prescription_items:
 
     def __init__(self,last_id,drug,quantity,instruction_to_customers):
         self.id = last_id + 1
-        if isinstance(drug, Drug_and_Medication):
-            self.drug.append(drug)
+        self.drug.append(is_obj(drug,Drug_and_Medication))
         self.quantity = quantity
         self.instruction_to_customers = instruction_to_customers
 
@@ -98,11 +100,15 @@ class Prescription_items:
     def get_drug(self):
         return self.drug
     def set_drug(self,drug):
-        if isinstance(drug, Drug_and_Medication):
-            self.drug.append(drug)
+        self.drug.append(is_obj(drug,Drug_and_Medication))
 
     def model_to_dict(self):
-        d = [self.get_id(),self.get_drug(),self.get_quantity(),self.get_instruction_to_customers()]
+        d = {
+            "prescription item id": self.get_id(),
+            "drug": self.get_drug(),    # CONTROLLA
+            "quantity": self.get_quantity(),
+            "indtruction to customers": self.get_instruction_to_customers()
+        }
         return d
 
 
@@ -126,7 +132,10 @@ class Ref_Payment_Methods:
         self.description = description
 
     def model_to_dict(self):
-        d = [self.get_id(),self.get_description()]
+        d = {
+            "payment method id": self.get_id(),
+            "description": self.get_description()
+        }
         return d
 
 
@@ -142,7 +151,10 @@ class Cash(Ref_Payment_Methods):
         self.value = value
 
     def model_to_dict(self):
-        d = [super().model_to_dict(),self.get_value()]
+        d = {
+            "cash": super().model_to_dict(),
+            "value": self.get_value()
+        }
         return d
 
 
@@ -167,7 +179,11 @@ class Credit_card(Ref_Payment_Methods):
         self.exipity_date = exipity_date
     
     def model_to_dict(self):
-        d = [super().model_to_dict(),self.get_number(),self.get_exipity_date()]
+        d = {
+            "credit card": super().model_to_dict(),
+            "number": self.get_number(),
+            "exipity date": self.get_exipity_date()
+        }
         return d
 
 
@@ -194,7 +210,10 @@ class Ref_Prescription_Status:
         self.description = description
 
     def model_to_dict(self):
-        d = [self.get_id(),self.get_description()]
+        d = {
+            "prescription status id": self.get_id(),
+            "description": self.get_description()
+        }
         return d
 
 

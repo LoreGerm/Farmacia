@@ -69,7 +69,17 @@ class Drug_and_Medication:
         self.other_details = other_details
 
     def model_to_dict(self):
-        d = [self.get_id(),self.get_name(),self.get_cost(),self.get_available_date(),self.get_withdraw_date(),self.get_description(),self.get_generic_yn(),self.get_generic_equivalent_drug_id(),self.get_other_details()]
+        d = {
+            "drug id": self.get_id(),
+            "name": self.get_name(),
+            "cost": self.get_cost(),
+            "available date": self.get_available_date(),
+            "withdraw date": self.get_withdraw_date(),
+            "description": self.get_description(),
+            "generic yn": self.get_generic_yn(),
+            "generic equivalent drug id": self.get_generic_equivalent_drug_id(),
+            "other details": self.get_other_details()
+        }
         return d
 
 
@@ -108,5 +118,10 @@ class Drug_company:
         self.drugs.append(is_obj(drugs,Drug_and_Medication))
 
     def model_to_dict(self):
-        d = [self.get_id(),self.get_name(),self.get_details(),self.get_drugs()]
+        d = {
+            "drug company id": self.get_id(),
+            "name": self.get_name(),
+            "details": self.get_details(),
+            "drug": self.get_drugs()            # CONTROLLA
+        }
         return d
