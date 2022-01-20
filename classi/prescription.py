@@ -59,7 +59,7 @@ class Prescription():
     def model_to_dict(self):
         d = {
             "prescription id": self.get_id(), 
-            "item": self.get_item(),    # CONTROLLA
+            "item": self.get_item(),                    # CONTROLLA
             "status": self.get_status().model_to_dict(),
             "payment method": self.get_payment_method().model_to_dict(),
             "issued date": self.get_issued_date(),
@@ -105,7 +105,7 @@ class Prescription_items:
     def model_to_dict(self):
         d = {
             "prescription item id": self.get_id(),
-            "drug": self.get_drug(),    # CONTROLLA
+            "drug": self.get_drug(),                # CONTROLLA
             "quantity": self.get_quantity(),
             "indtruction to customers": self.get_instruction_to_customers()
         }

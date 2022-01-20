@@ -18,7 +18,7 @@ class Address:
         self.postcode = postcode
         self.province = province
         self.country = country
-        self.other_address_details = other_address_details     # Opzionale
+        self.other_address_details = other_address_details
 
     def get_id(self):
         return self.id      
