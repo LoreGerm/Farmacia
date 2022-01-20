@@ -1,3 +1,4 @@
+import json
 from classi.address import Address
 from classi.drug import Drug_and_Medication,Drug_company
 from classi.fun import *
@@ -15,6 +16,8 @@ d = [dm,dm1]
 
 dc = Drug_company(0,0,0,d)
 print(dc.model_to_dict())
+
+
 
 
 '''
