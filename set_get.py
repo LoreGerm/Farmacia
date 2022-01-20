@@ -5,12 +5,8 @@ from classi.people import Physician
 from classi.prescription import Prescription
 
 
-a = Address(0,0,0,0,0,0,0,0)
-p = Physician(a,0,0,0)
 
-print(p.model_to_dict())
 
-'''
 dm = Drug_and_Medication(0,0,0,0,0,0,0,0,0)
 dm1 = Drug_and_Medication(1,0,0,0,0,0,0,0,0)
 d = [dm,dm1]
@@ -19,6 +15,11 @@ dc = Drug_company(0,0,0,d)
 
 print(dc.model_to_dict())
 
+'''
+a = Address(0,0,0,0,0,0,0,0)
+p = Physician(a,0,0,0)
+
+print(p.model_to_dict())
 
 cont = 0
 
