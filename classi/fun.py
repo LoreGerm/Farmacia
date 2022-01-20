@@ -1,8 +1,10 @@
 import json
 import os
 
-farmacia = "farmacia.txt"
 
+
+farmacia = "farmacia.txt"
+cestino = "cestino.txt"
 
 
 # SRIVI NEL FILE
@@ -14,15 +16,12 @@ def over_write(file_name,ru):
 
 try:
     size_far = os.path.getsize(farmacia)
-    #sizeCess = os.path.getsize(cestino)
+    size_cess = os.path.getsize(cestino)
 except:
     over_write(farmacia,[])
-    #Over_write(cestino,[])
+    over_write(cestino,[])
     size_far = os.path.getsize(farmacia)
-    #sizeCess = os.path.getsize(cestino)
-
-
-
+    size_cess = os.path.getsize(cestino)
 
 
 # CONTROLLA SE OBJ è UN OGGETTO
@@ -38,7 +37,7 @@ def is_obj(obj,type):
 
 
 
-# SCORRE LA LISTA DO OBJ E LI TRASFORMA IN DICT
+# SCORRE LA LISTA DI OBJ E LI TRASFORMA IN DICT
 def scorri_lista(list):
     a = []
     for i in list:
@@ -54,28 +53,29 @@ def stampa(file):
     return a
 
 
-def search():
+# CERCA ALL'INTERNO DEL FILE FARMACIA.TXT
+def search(indice_dict,obj):
     pass
 
-'''
-def agg_size():
-    try:
-        size_far = os.path.getsize(farmacia)
-        #sizeCess = os.path.getsize(cestino)
-    except:
-        over_write(farmacia,[])
-        #Over_write(cestino,[])
-        size_far = os.path.getsize(farmacia)
-        #sizeCess = os.path.getsize(cestino)
-'''
 
+# AGGIUNGI L'OBJ AL FILE FARMACIA.TXT  (IL FILE SE VUOTO DEVE AVERE LE [])
 def add(obj):
     if size_far == 0:
         far = [obj.model_to_dict()]
         over_write(farmacia,far)
-        #agg_size()
     else:
         far = json.loads(stampa(farmacia))
         far.append(obj.model_to_dict())
         over_write(farmacia,far)
-        #agg_size()
+
+
+# ELIMINA L'INTERO FILE FARMACIA.TXT
+def reset():
+    if size_cess == 0:
+        over_write(cestino,json.loads(stampa(farmacia)))
+        over_write(farmacia,[])
+    else:
+        ces = json.loads(stampa(cestino))
+        ces.append(json.loads(stampa(farmacia)))
+        over_write(cestino,ces)
+        over_write(farmacia,[])

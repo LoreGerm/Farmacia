@@ -1,4 +1,4 @@
-from classi.fun import *
+from classi.fun import is_obj,scorri_lista
 
 
 class Drug_and_Medication:
