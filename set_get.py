@@ -1,8 +1,16 @@
+from classi.address import Address
 from classi.drug import Drug_and_Medication,Drug_company
 from classi.fun import *
+from classi.people import Physician
+from classi.prescription import Prescription
 
 
+a = Address(0,0,0,0,0,0,0,0)
+p = Physician(a,0,0,0)
 
+print(p.model_to_dict())
+
+'''
 dm = Drug_and_Medication(0,0,0,0,0,0,0,0,0)
 dm1 = Drug_and_Medication(1,0,0,0,0,0,0,0,0)
 d = [dm,dm1]
@@ -11,7 +19,7 @@ dc = Drug_company(0,0,0,d)
 
 print(dc.model_to_dict())
 
-'''
+
 cont = 0
 
 for attr in p.__dict__:
@@ -27,5 +35,10 @@ for attr in p.__dict__:
     cont += 1
 
 print(cont)
+
+
+"drug company id": self.get_id(),
+"name": self.get_name(),
+"details": self.get_details(),
 
 '''

@@ -12,5 +12,7 @@ def is_obj(obj,type):
 
 
 def scorri_lista(list):
+    a = []
     for i in list:
-        i.model_to_dict()
+        a.append(i.model_to_dict())
+    return a

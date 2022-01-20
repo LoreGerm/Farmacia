@@ -1,4 +1,4 @@
-from classi.people import Customer
+
 
 class Address:
     id = 0

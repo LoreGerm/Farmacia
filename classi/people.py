@@ -38,7 +38,7 @@ class Physician:
     def model_to_dict(self):
         d = {
             "physician id": self.get_id(),
-            "address": self.get_address(),              # CONTROLLA
+            "address": self.get_address().model_to_dict(),         
             "prescription": self.get_prescription(),    # CONTROLLA
             "details": self.get_physician_details()
         }
@@ -113,10 +113,10 @@ class Customer:
             "customer id": self.get_id(),
             "name": self.get_name(),
             "surname": self.get_surname(),
-            "address": self.get_address(),              # CONTROLLA
+            "address": self.get_address().model_to_dict(), 
             "prescription": self.get_prescription(),    # CONTROLLA
             "date became customers": self.get_date_became_customer(),
-            "credit card": self.get_credit_card(),      # CONTROLLA
+            "credit card": self.get_credit_card().model_to_dict(),     
             "other details": self.get_other_customer_details()
         }
         return d

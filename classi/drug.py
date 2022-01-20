@@ -1,4 +1,4 @@
-from classi.fun import is_obj
+from classi.fun import is_obj,scorri_lista
 
 
 class Drug_and_Medication:
@@ -122,6 +122,6 @@ class Drug_company:
             "drug company id": self.get_id(),
             "name": self.get_name(),
             "details": self.get_details(),
-            "drug": self.get_drugs().model_to_dict_()  # get restituisce una lista, model_to_dict non è un metodo della lista
+            "drug": scorri_lista(self.get_drugs())  # get restituisce una lista, model_to_dict non è un metodo della lista
         }
         return d

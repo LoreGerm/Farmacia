@@ -60,8 +60,8 @@ class Prescription():
         d = {
             "prescription id": self.get_id(), 
             "item": self.get_item(),    # CONTROLLA
-            "status": self.get_status(),    # CONTROLLA
-            "payment method": self.get_payment_method(),    # CONTROLLA
+            "status": self.get_status().model_to_dict(),
+            "payment method": self.get_payment_method().model_to_dict(),
             "issued date": self.get_issued_date(),
             "filled date": self.get_filled_date(),
             "other details": self.get_other_details()
