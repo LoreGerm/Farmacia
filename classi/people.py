@@ -13,7 +13,10 @@ class Physician:
         self.physician_details = physician_details
         self.id = last_id + 1
         if self.get_prescription() == []:
-            self.prescription = is_obj(prescription,Prescription)
+            if isinstance(prescription,list):
+                self.prescription = is_obj(prescription,Prescription)
+            else:
+                self.prescription = [is_obj(prescription,Prescription)]
         else:
             self.prescription.append(is_obj(prescription,Prescription))
         self.address = is_obj(address,Address)
@@ -37,7 +40,10 @@ class Physician:
         return self.prescription
     def set_prescription(self,prescription):
         if self.get_prescription() == []:
-            self.prescription = is_obj(prescription,Prescription)
+            if isinstance(prescription,list):
+                self.prescription = is_obj(prescription,Prescription)
+            else:
+                self.prescription = [is_obj(prescription,Prescription)]
         else:
             self.prescription.append(is_obj(prescription,Prescription))
 
@@ -71,7 +77,10 @@ class Customer:
         self.date_became_customer = date_became_customer
         self.other_customer_details = other_customer_details
         if self.get_prescription() == []:
-            self.prescription = is_obj(prescription,Prescription)
+            if isinstance(prescription,list):
+                self.prescription = is_obj(prescription,Prescription)
+            else:
+                self.prescription = [is_obj(prescription,Prescription)]
         else:
             self.prescription.append(is_obj(prescription,Prescription))
         self.prescription.append(is_obj(prescription,Prescription))
@@ -92,7 +101,10 @@ class Customer:
         return self.prescription
     def set_prescription(self,prescription):
         if self.get_prescription() == []:
-            self.prescription = is_obj(prescription,Prescription)
+            if isinstance(prescription,list):
+                self.prescription = is_obj(prescription,Prescription)
+            else:
+                self.prescription = [is_obj(prescription,Prescription)]
         else:
             self.prescription.append(is_obj(prescription,Prescription))
 

@@ -95,7 +95,10 @@ class Drug_company:
         self.name = name
         self.details = details
         if self.get_drugs() == []:
-            self.drugs = (is_obj(drugs,Drug_and_Medication))
+            if isinstance(drugs,list):
+                self.drugs = is_obj(drugs,Drug_and_Medication)
+            else:
+                self.drugs = [is_obj(drugs,Drug_and_Medication)]
         else:
             self.drugs.append(is_obj(drugs,Drug_and_Medication))
 
@@ -118,7 +121,10 @@ class Drug_company:
         return self.drugs
     def set_drugs(self,drugs):
         if self.get_drugs() == []:
-            self.drugs = (is_obj(drugs,Drug_and_Medication))
+            if isinstance(drugs,list):
+                self.drugs = is_obj(drugs,Drug_and_Medication)
+            else:
+                self.drugs = [is_obj(drugs,Drug_and_Medication)]
         else:
             self.drugs.append(is_obj(drugs,Drug_and_Medication))
 
