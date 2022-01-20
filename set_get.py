@@ -17,6 +17,9 @@ d = [dm,dm1]
 dc = Drug_company(0,0,0,d)
 print(dc.model_to_dict())
 
+f = open("prova.txt", w)
+f.write(json.dumps(dc.model_to_dict())) 
+f.close()
 
 
 
