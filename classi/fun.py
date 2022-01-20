@@ -7,7 +7,8 @@ def is_obj(obj,type):
                 return []
         return obj
     else:
-        return obj
+        if isinstance(obj, type):
+            return obj
 
 
 
@@ -16,3 +17,4 @@ def scorri_lista(list):
     for i in list:
         a.append(i.model_to_dict())    # ERROR
     return a
+

@@ -11,9 +11,11 @@ dm = Drug_and_Medication(0,0,0,0,0,0,0,0,0)
 dm1 = Drug_and_Medication(1,0,0,0,0,0,0,0,0)
 d = [dm,dm1]
 
-dc = Drug_company(0,0,0,d)
+#print(scorri_lista(d))
 
+dc = Drug_company(0,0,0,d)
 print(dc.model_to_dict())
+
 
 '''
 a = Address(0,0,0,0,0,0,0,0)

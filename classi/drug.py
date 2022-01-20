@@ -1,4 +1,4 @@
-from classi.fun import is_obj,scorri_lista
+from classi.fun import *
 
 
 class Drug_and_Medication:
@@ -83,19 +83,21 @@ class Drug_and_Medication:
         return d
 
 
-from operator import methodcaller
 
 class Drug_company:
     id = 0
     name = ""
     details = ""
-    drugs = []   # OBJ Drug_and_Medication
+    drugs = []  # OBJ Drug_and_Medication
 
     def __init__(self,last_id,name,details,drugs):
         self.id = last_id + 1
         self.name = name
         self.details = details
-        self.drugs.append(is_obj(drugs,Drug_and_Medication))
+        if self.get_drugs() == []:
+            self.drugs = (is_obj(drugs,Drug_and_Medication))
+        else:
+            self.drugs.append(is_obj(drugs,Drug_and_Medication))
 
     def get_id(self):
         return self.id
@@ -115,13 +117,16 @@ class Drug_company:
     def get_drugs(self):
         return self.drugs
     def set_drugs(self,drugs):
-        self.drugs.append(is_obj(drugs,Drug_and_Medication))
+        if self.get_drugs() == []:
+            self.drugs = (is_obj(drugs,Drug_and_Medication))
+        else:
+            self.drugs.append(is_obj(drugs,Drug_and_Medication))
 
     def model_to_dict(self):
         d = {
             "drug company id": self.get_id(),
             "name": self.get_name(),
             "details": self.get_details(),
-            "drug": scorri_lista(self.get_drugs())  # get restituisce una lista, model_to_dict non è un metodo della lista
+            "drug": scorri_lista(self.get_drugs())
         }
         return d

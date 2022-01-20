@@ -12,7 +12,10 @@ class Physician:
     def __init__(self,address,physician_details,last_id,prescription):
         self.physician_details = physician_details
         self.id = last_id + 1
-        self.prescription.append(is_obj(prescription,Prescription))
+        if self.get_prescription() == []:
+            self.prescription = is_obj(prescription,Prescription)
+        else:
+            self.prescription.append(is_obj(prescription,Prescription))
         self.address = is_obj(address,Address)
 
     def get_physician_details(self):
@@ -33,13 +36,16 @@ class Physician:
     def get_prescription(self):
         return self.prescription
     def set_prescription(self,prescription):
-        self.prescription.append(is_obj(prescription,Prescription))
+        if self.get_prescription() == []:
+            self.prescription = is_obj(prescription,Prescription)
+        else:
+            self.prescription.append(is_obj(prescription,Prescription))
 
     def model_to_dict(self):
         d = {
             "physician id": self.get_id(),
             "address": self.get_address().model_to_dict(),         
-            "prescription": self.get_prescription(),    # CONTROLLA
+            "prescription": self.get_prescription(),
             "details": self.get_physician_details()
         }
         return d
@@ -63,7 +69,11 @@ class Customer:
         self.name = name
         self.surname = surname
         self.date_became_customer = date_became_customer
-        self.other_customer_details = other_customer_details  # Opzionale
+        self.other_customer_details = other_customer_details
+        if self.get_prescription() == []:
+            self.prescription = is_obj(prescription,Prescription)
+        else:
+            self.prescription.append(is_obj(prescription,Prescription))
         self.prescription.append(is_obj(prescription,Prescription))
         self.address = is_obj(address,Address) 
         self.credit_card = is_obj(credit_card,Credit_card)
@@ -81,7 +91,10 @@ class Customer:
     def get_prescription(self):
         return self.prescription
     def set_prescription(self,prescription):
-        self.prescription.append(is_obj(prescription,Prescription))
+        if self.get_prescription() == []:
+            self.prescription = is_obj(prescription,Prescription)
+        else:
+            self.prescription.append(is_obj(prescription,Prescription))
 
     def get_id(self):
         return self.id
@@ -114,7 +127,7 @@ class Customer:
             "name": self.get_name(),
             "surname": self.get_surname(),
             "address": self.get_address().model_to_dict(), 
-            "prescription": self.get_prescription(),    # CONTROLLA
+            "prescription": self.get_prescription(),
             "date became customers": self.get_date_became_customer(),
             "credit card": self.get_credit_card().model_to_dict(),     
             "other details": self.get_other_customer_details()
