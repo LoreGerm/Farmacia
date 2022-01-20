@@ -83,7 +83,7 @@ class Drug_and_Medication:
         return d
 
 
-
+from operator import methodcaller
 
 class Drug_company:
     id = 0
@@ -122,6 +122,6 @@ class Drug_company:
             "drug company id": self.get_id(),
             "name": self.get_name(),
             "details": self.get_details(),
-            "drug": self.get_drugs()            # CONTROLLA
+            "drug": self.get_drugs().model_to_dict_()  # get restituisce una lista, model_to_dict non è un metodo della lista
         }
         return d

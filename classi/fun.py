@@ -8,3 +8,9 @@ def is_obj(obj,type):
         return obj
     else:
         return obj
+
+
+
+def scorri_lista(list):
+    for i in list:
+        i.model_to_dict()

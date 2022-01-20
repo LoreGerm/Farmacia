@@ -3,8 +3,6 @@ from classi.fun import *
 
 
 
-
-
 dm = Drug_and_Medication(0,0,0,0,0,0,0,0,0)
 dm1 = Drug_and_Medication(1,0,0,0,0,0,0,0,0)
 d = [dm,dm1]
