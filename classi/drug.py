@@ -26,7 +26,7 @@ class Drug_and_Medication:
         if self.all_item == []:
             self.all_item.append(self.model_to_dict())
         else:
-            assert search(self) == True, f"L'oggetto esiste"
+            assert search(self) == True, f"L'oggetto esiste"    # AGGIUSTA ##################
             self.all_item.append(self.model_to_dict())
 
             
