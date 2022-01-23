@@ -7,25 +7,39 @@ from classi.prescription import Prescription
 
 
 
+farmacia = "farmacia.txt"
 
 dm = Drug_and_Medication(0,0,0,0,0,0,0,0,0)
 dm1 = Drug_and_Medication(1,0,0,0,0,0,0,0,0)
 d = [dm,dm1]
 
-#print(scorri_lista(d))
+dc = Drug_company(2,0,0,d)
+add(dc)
+#a = Address(3,0,0,0,0,0,0,0)
+#p = Physician(4,a,0,0)
+#add(p)
 
-dc = Drug_company(0,0,0,d)
-print(dc.model_to_dict())
+dm2 = Drug_and_Medication(5,0,0,0,0,0,0,0,0)
+dc2 = Drug_company(6,0,0,dm2)
+add(dc2)
 
-f = open("prova.txt", "w")
-f.write(json.dumps(dc.model_to_dict())) 
-f.close()
+#print(search(dc2))
+
+#reset()
+
+
+
+print(dc.get_all_item())
+#print(dm.get_all_item())
 
 
 
 '''
-a = Address(0,0,0,0,0,0,0,0)
-p = Physician(a,0,0,0)
+if dc2.get_all_item()[1] == dc2.get_all_item()[1]:
+    print(True)
+
+
+
 
 print(p.model_to_dict())
 
