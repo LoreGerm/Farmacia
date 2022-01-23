@@ -8,6 +8,7 @@ class Physician:
     address = None   # OBJ Address
     prescription = []   # OBJ Prescription
     physician_details = ""
+    all_item = []
 
     def __init__(self,last_id,address,prescription,physician_details):
         self.physician_details = physician_details
@@ -20,6 +21,11 @@ class Physician:
         else:
             self.prescription.append(is_obj(prescription,Prescription))
         self.address = is_obj(address,Address)
+        self.all_item.append(self.model_to_dict())
+
+
+    def get_all_item(self):
+        return self.all_item
 
     def get_physician_details(self):
         return self.physician_details
@@ -69,6 +75,7 @@ class Customer:
     surname = ""
     date_became_customer = ""
     other_customer_details = ""
+    all_item = []
 
     def __init__(self,last_id,address,prescription,credit_card,name,surname,date_became_customer,other_customer_details):
         self.id = last_id + 1
@@ -86,6 +93,11 @@ class Customer:
         self.prescription.append(is_obj(prescription,Prescription))
         self.address = is_obj(address,Address) 
         self.credit_card = is_obj(credit_card,Credit_card)
+        self.all_item.append(self.model_to_dict())
+
+
+    def get_all_item(self):
+        return self.all_item
 
     def get_credit_card(self):
         return self.credit_card_number

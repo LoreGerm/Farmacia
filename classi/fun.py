@@ -52,7 +52,7 @@ def stampa(file):
     f.close()
     return a
 
-
+'''
 # CERCA ALL'INTERNO DEL FILE FARMACIA.TXT    AGGIUNGERE RICERCA DIZIONARIO DENTRO DIZIONARIO    (CREARE PIU' FILE PER OGNI OBJ?)
 def search(value,indice_dict):
     far = json.loads(stampa(farmacia))
@@ -60,6 +60,16 @@ def search(value,indice_dict):
         if i[indice_dict] == value:
             return True
     return False
+'''
+
+# TEST ##############################
+def search(obj):
+    far = obj.get_all_item()
+    for i in far:
+        if i == obj.model_to_dict():
+            return True
+    return False
+
 
 
 # AGGIUNGI L'OBJ AL FILE FARMACIA.TXT  (IL FILE SE VUOTO DEVE AVERE LE [])
@@ -85,7 +95,8 @@ def reset():
         over_write(farmacia,[])
 
 
+############################################ FINIRE
 def create(obj):
-    for attr in obj.__dict__:
+    for attr in obj.__dict__ - 1:
         x = input("assegna "+attr+": ")
-        
+

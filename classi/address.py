@@ -9,6 +9,7 @@ class Address:
     province = ""
     country = ""
     other_address_details = ""
+    all_item = []
 
     def __init__(self,last_id,via,number,city,postcode,province,country,other_address_details):
         self.id = last_id + 1 
@@ -19,6 +20,11 @@ class Address:
         self.province = province
         self.country = country
         self.other_address_details = other_address_details
+        self.all_item.append(self.model_to_dict())
+
+
+    def get_all_item(self):
+        return self.all_item
 
     def get_id(self):
         return self.id      

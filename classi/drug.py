@@ -1,4 +1,4 @@
-from classi.fun import is_obj,scorri_lista
+from classi.fun import is_obj,scorri_lista,search
 
 
 class Drug_and_Medication:
@@ -11,6 +11,7 @@ class Drug_and_Medication:
     generic_yn = ""
     generic_equivalent_drug_id = ""
     other_details = ""
+    all_item = []
 
     def __init__(self,last_id,name,cost,available_date,withdraw_date,description,generic_yn,generic_equivalent_drug_id,other_details):
         self.id = last_id + 1
@@ -22,6 +23,16 @@ class Drug_and_Medication:
         self.generic_yn = generic_yn
         self.generic_equivalent_drug_id = generic_equivalent_drug_id
         self.other_details = other_details
+        if self.all_item == []:
+            self.all_item.append(self.model_to_dict())
+        else:
+            assert search(self) == True, f"L'oggetto esiste"
+            self.all_item.append(self.model_to_dict())
+
+            
+
+    def get_all_item(self):
+        return self.all_item
 
     def get_id(self):
         return self.id
@@ -89,6 +100,7 @@ class Drug_company:
     name = ""
     details = ""
     drugs = []  # OBJ Drug_and_Medication
+    all_item = []
 
     def __init__(self,last_id,name,details,drugs):
         self.id = last_id + 1
@@ -101,6 +113,15 @@ class Drug_company:
                 self.drugs = [is_obj(drugs,Drug_and_Medication)]
         else:
             self.drugs.append(is_obj(drugs,Drug_and_Medication))
+        if self.all_item == []:
+            self.all_item.append(self.model_to_dict())
+        else:
+            assert search(self) == True, f"L'oggetto esiste"
+            self.all_item.append(self.model_to_dict())
+
+
+    def get_all_item(self):
+        return self.all_item
 
     def get_id(self):
         return self.id

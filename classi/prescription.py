@@ -11,6 +11,7 @@ class Prescription():
     issued_date = ""
     filled_date = ""
     other_details = ""
+    all_item = []
 
     def __init__(self,last_id,payment_method,status,item,issued_date,filled_date,other_details):
         self.id = last_id + 1
@@ -26,6 +27,11 @@ class Prescription():
         self.issued_date = issued_date
         self.filled_date = filled_date
         self.other_details = other_details
+        self.all_item.append(self.model_to_dict())
+
+
+    def get_all_item(self):
+        return self.all_item
 
     def get_payment_method(self):
         return self.payment_method
@@ -87,6 +93,7 @@ class Prescription_items:
     drug = []    # OBJ Drug_and_Medication
     quantity = 0
     instruction_to_customers = ""
+    all_item = []
 
     def __init__(self,last_id,drug,quantity,instruction_to_customers):
         self.id = last_id + 1
@@ -99,6 +106,11 @@ class Prescription_items:
             self.drug.append(is_obj(drug,Drug_and_Medication))
         self.quantity = quantity
         self.instruction_to_customers = instruction_to_customers
+        self.all_item.append(self.model_to_dict())
+
+
+    def get_all_item(self):
+        return self.all_item
 
     def get_id(self):
         return self.id
@@ -140,10 +152,16 @@ class Prescription_items:
 class Ref_Payment_Methods:
     id = 0
     descriptio = ""
-    
+    all_item = []
+
     def __init__(self,last_id,description):
         self.id = last_id + 1
         self.descriptio = description
+        self.all_item.append(self.model_to_dict())
+
+
+    def get_all_item(self):
+        return self.all_item
 
     def get_id(self):
         return self.id
@@ -166,7 +184,7 @@ class Ref_Payment_Methods:
 
 class Cash(Ref_Payment_Methods):
     value = 0
-    
+
     def __init__(self,value):
         self.value = value
 
@@ -219,10 +237,16 @@ class Credit_card(Ref_Payment_Methods):
 class Ref_Prescription_Status:
     id = 0
     description = ""
-    
+    all_item = []
+
     def __init__(self,last_id,description):
         self.id = last_id + 1
         self.description = description
+        self.all_item.append(self.model_to_dict())
+
+
+    def get_all_item(self):
+        return self.all_item
 
     def get_id(self):
         return self.id
