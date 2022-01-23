@@ -1,4 +1,4 @@
-from classi.fun import *
+from classi.fun import is_obj,scorri_lista
 
 
 class Drug_and_Medication:
@@ -70,7 +70,7 @@ class Drug_and_Medication:
 
     def model_to_dict(self):
         d = {
-            "drug id": self.get_id(),
+            "id": self.get_id(),
             "name": self.get_name(),
             "cost": self.get_cost(),
             "available date": self.get_available_date(),
@@ -95,7 +95,10 @@ class Drug_company:
         self.name = name
         self.details = details
         if self.get_drugs() == []:
-            self.drugs = (is_obj(drugs,Drug_and_Medication))
+            if isinstance(drugs,list):
+                self.drugs = is_obj(drugs,Drug_and_Medication)
+            else:
+                self.drugs = [is_obj(drugs,Drug_and_Medication)]
         else:
             self.drugs.append(is_obj(drugs,Drug_and_Medication))
 
@@ -118,13 +121,16 @@ class Drug_company:
         return self.drugs
     def set_drugs(self,drugs):
         if self.get_drugs() == []:
-            self.drugs = (is_obj(drugs,Drug_and_Medication))
+            if isinstance(drugs,list):
+                self.drugs = is_obj(drugs,Drug_and_Medication)
+            else:
+                self.drugs = [is_obj(drugs,Drug_and_Medication)]
         else:
             self.drugs.append(is_obj(drugs,Drug_and_Medication))
 
     def model_to_dict(self):
         d = {
-            "drug company id": self.get_id(),
+            "id": self.get_id(),
             "name": self.get_name(),
             "details": self.get_details(),
             "drug": scorri_lista(self.get_drugs())

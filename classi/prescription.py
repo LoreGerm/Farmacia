@@ -17,7 +17,10 @@ class Prescription():
         self.payment_method = is_obj(payment_method,Ref_Payment_Methods)
         self.status = is_obj(status,Ref_Prescription_Status)
         if self.get_item() == []:
-            self.item = is_obj(item,Prescription_items)
+            if isinstance(item,list):
+                self.item = is_obj(item,Prescription_items)
+            else:
+                self.item = [is_obj(item,Prescription_items)]
         else:
             self.item.append(is_obj(item,Prescription_items))
         self.issued_date = issued_date
@@ -38,7 +41,10 @@ class Prescription():
         return self.item
     def set_item(self,item):
         if self.get_item() == []:
-            self.item = is_obj(item,Prescription_items)
+            if isinstance(item,list):
+                self.item = is_obj(item,Prescription_items)
+            else:
+                self.item = [is_obj(item,Prescription_items)]
         else:
             self.item.append(is_obj(item,Prescription_items))
 
@@ -64,7 +70,7 @@ class Prescription():
 
     def model_to_dict(self):
         d = {
-            "prescription id": self.get_id(), 
+            "id": self.get_id(), 
             "item": self.get_item(),                   
             "status": self.get_status().model_to_dict(),
             "payment method": self.get_payment_method().model_to_dict(),
@@ -84,8 +90,11 @@ class Prescription_items:
 
     def __init__(self,last_id,drug,quantity,instruction_to_customers):
         self.id = last_id + 1
-        if self.get_item() == []:
-            self.drug = is_obj(drug,Drug_and_Medication)
+        if self.get_drug() == []:
+            if isinstance(drug,Drug_and_Medication):
+                self.drug = is_obj(drug,Drug_and_Medication)
+            else:
+                self.drug = [is_obj(drug,Drug_and_Medication)]
         else:
             self.drug.append(is_obj(drug,Drug_and_Medication))
         self.quantity = quantity
@@ -109,14 +118,17 @@ class Prescription_items:
     def get_drug(self):
         return self.drug
     def set_drug(self,drug):
-        if self.get_item() == []:
-            self.drug = is_obj(drug,Drug_and_Medication)
+        if self.get_drug() == []:
+            if isinstance(drug,Drug_and_Medication):
+                self.drug = is_obj(drug,Drug_and_Medication)
+            else:
+                self.drug = [is_obj(drug,Drug_and_Medication)]
         else:
             self.drug.append(is_obj(drug,Drug_and_Medication))
 
     def model_to_dict(self):
         d = {
-            "prescription item id": self.get_id(),
+            "id": self.get_id(),
             "drug": self.get_drug(),
             "quantity": self.get_quantity(),
             "indtruction to customers": self.get_instruction_to_customers()
@@ -145,7 +157,7 @@ class Ref_Payment_Methods:
 
     def model_to_dict(self):
         d = {
-            "payment method id": self.get_id(),
+            "id": self.get_id(),
             "description": self.get_description()
         }
         return d
@@ -154,6 +166,7 @@ class Ref_Payment_Methods:
 
 class Cash(Ref_Payment_Methods):
     value = 0
+    
     def __init__(self,value):
         self.value = value
 
@@ -223,7 +236,7 @@ class Ref_Prescription_Status:
 
     def model_to_dict(self):
         d = {
-            "prescription status id": self.get_id(),
+            "id": self.get_id(),
             "description": self.get_description()
         }
         return d

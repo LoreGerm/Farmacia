@@ -9,11 +9,14 @@ class Physician:
     prescription = []   # OBJ Prescription
     physician_details = ""
 
-    def __init__(self,address,physician_details,last_id,prescription):
+    def __init__(self,last_id,address,prescription,physician_details):
         self.physician_details = physician_details
         self.id = last_id + 1
         if self.get_prescription() == []:
-            self.prescription = is_obj(prescription,Prescription)
+            if isinstance(prescription,list):
+                self.prescription = is_obj(prescription,Prescription)
+            else:
+                self.prescription = [is_obj(prescription,Prescription)]
         else:
             self.prescription.append(is_obj(prescription,Prescription))
         self.address = is_obj(address,Address)
@@ -37,13 +40,16 @@ class Physician:
         return self.prescription
     def set_prescription(self,prescription):
         if self.get_prescription() == []:
-            self.prescription = is_obj(prescription,Prescription)
+            if isinstance(prescription,list):
+                self.prescription = is_obj(prescription,Prescription)
+            else:
+                self.prescription = [is_obj(prescription,Prescription)]
         else:
             self.prescription.append(is_obj(prescription,Prescription))
 
     def model_to_dict(self):
         d = {
-            "physician id": self.get_id(),
+            "id": self.get_id(),
             "address": self.get_address().model_to_dict(),         
             "prescription": self.get_prescription(),
             "details": self.get_physician_details()
@@ -64,14 +70,17 @@ class Customer:
     date_became_customer = ""
     other_customer_details = ""
 
-    def __init__(self,credit_card,prescription,last_id,name,date_became_customer,other_customer_details,address,surname):
+    def __init__(self,last_id,address,prescription,credit_card,name,surname,date_became_customer,other_customer_details):
         self.id = last_id + 1
         self.name = name
         self.surname = surname
         self.date_became_customer = date_became_customer
         self.other_customer_details = other_customer_details
         if self.get_prescription() == []:
-            self.prescription = is_obj(prescription,Prescription)
+            if isinstance(prescription,list):
+                self.prescription = is_obj(prescription,Prescription)
+            else:
+                self.prescription = [is_obj(prescription,Prescription)]
         else:
             self.prescription.append(is_obj(prescription,Prescription))
         self.prescription.append(is_obj(prescription,Prescription))
@@ -92,7 +101,10 @@ class Customer:
         return self.prescription
     def set_prescription(self,prescription):
         if self.get_prescription() == []:
-            self.prescription = is_obj(prescription,Prescription)
+            if isinstance(prescription,list):
+                self.prescription = is_obj(prescription,Prescription)
+            else:
+                self.prescription = [is_obj(prescription,Prescription)]
         else:
             self.prescription.append(is_obj(prescription,Prescription))
 
@@ -123,7 +135,7 @@ class Customer:
 
     def model_to_dict(self):
         d = {
-            "customer id": self.get_id(),
+            "id": self.get_id(),
             "name": self.get_name(),
             "surname": self.get_surname(),
             "address": self.get_address().model_to_dict(), 
