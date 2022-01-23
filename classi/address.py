@@ -62,7 +62,7 @@ class Address:
 
     def model_to_dict(self):
         d = {
-            "address id": self.get_id(),
+            "id": self.get_id(),
             "via": self.get_via(),
             "number": self.get_number(),
             "city": self.get_city(),

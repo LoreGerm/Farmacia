@@ -70,7 +70,7 @@ class Prescription():
 
     def model_to_dict(self):
         d = {
-            "prescription id": self.get_id(), 
+            "id": self.get_id(), 
             "item": self.get_item(),                   
             "status": self.get_status().model_to_dict(),
             "payment method": self.get_payment_method().model_to_dict(),
@@ -128,7 +128,7 @@ class Prescription_items:
 
     def model_to_dict(self):
         d = {
-            "prescription item id": self.get_id(),
+            "id": self.get_id(),
             "drug": self.get_drug(),
             "quantity": self.get_quantity(),
             "indtruction to customers": self.get_instruction_to_customers()
@@ -157,7 +157,7 @@ class Ref_Payment_Methods:
 
     def model_to_dict(self):
         d = {
-            "payment method id": self.get_id(),
+            "id": self.get_id(),
             "description": self.get_description()
         }
         return d
@@ -166,6 +166,7 @@ class Ref_Payment_Methods:
 
 class Cash(Ref_Payment_Methods):
     value = 0
+    
     def __init__(self,value):
         self.value = value
 
@@ -235,7 +236,7 @@ class Ref_Prescription_Status:
 
     def model_to_dict(self):
         d = {
-            "prescription status id": self.get_id(),
+            "id": self.get_id(),
             "description": self.get_description()
         }
         return d

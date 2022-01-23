@@ -70,7 +70,7 @@ class Drug_and_Medication:
 
     def model_to_dict(self):
         d = {
-            "drug id": self.get_id(),
+            "id": self.get_id(),
             "name": self.get_name(),
             "cost": self.get_cost(),
             "available date": self.get_available_date(),
@@ -130,7 +130,7 @@ class Drug_company:
 
     def model_to_dict(self):
         d = {
-            "drug company id": self.get_id(),
+            "id": self.get_id(),
             "name": self.get_name(),
             "details": self.get_details(),
             "drug": scorri_lista(self.get_drugs())
