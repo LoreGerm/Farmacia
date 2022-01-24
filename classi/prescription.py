@@ -4,14 +4,14 @@ from classi.fun import is_obj,search
 
 
 class Prescription():
-    _id = 0
-    _payment_method = None   # OBJ Ref_Payment_Methods
-    _status = None    # OBJ Ref_Prescription_Status
-    _item = []     # OBJ Prescription_items
-    _issued_date = ""
-    _filled_date = ""
-    _other_details = ""
-    _all_item = []
+    id = 0
+    payment_method = None   # OBJ Ref_Payment_Methods
+    status = None    # OBJ Ref_Prescription_Status
+    item = []     # OBJ Prescription_items
+    issued_date = ""
+    filled_date = ""
+    other_details = ""
+    all_item = []
 
     def __init__(self,last_id,payment_method,status,item,issued_date,filled_date,other_details):
         self.id = last_id + 1
@@ -92,11 +92,11 @@ class Prescription():
 
 
 class Prescription_items:
-    _id = 0
-    _drug = []    # OBJ Drug_and_Medication
-    _quantity = 0
-    _instruction_to_customers = ""
-    _all_item = []
+    id = 0
+    drug = []    # OBJ Drug_and_Medication
+    quantity = 0
+    instruction_to_customers = ""
+    all_item = []
 
     def __init__(self,last_id,drug,quantity,instruction_to_customers):
         self.id = last_id + 1
@@ -157,9 +157,9 @@ class Prescription_items:
 
 
 class Ref_Payment_Methods:
-    _id = 0
-    _descriptio = ""
-    _all_item = []
+    id = 0
+    descriptio = ""
+    all_item = []
 
     def __init__(self,last_id,description):
         self.id = last_id + 1
@@ -194,7 +194,7 @@ class Ref_Payment_Methods:
 
 
 class Cash(Ref_Payment_Methods):
-    _value = 0
+    value = 0
 
     def __init__(self,value):
         self.value = value
@@ -215,8 +215,8 @@ class Cash(Ref_Payment_Methods):
 
 
 class Credit_card(Ref_Payment_Methods):
-    _number = 0
-    _expiry_date = 0
+    number = 0
+    expiry_date = 0
 
     def __init__(self,number,exipity_date):
         self.number = number
@@ -246,9 +246,9 @@ class Credit_card(Ref_Payment_Methods):
 
 
 class Ref_Prescription_Status:
-    _id = 0
-    _description = ""
-    _all_item = []
+    id = 0
+    description = ""
+    all_item = []
 
     def __init__(self,last_id,description):
         self.id = last_id + 1
