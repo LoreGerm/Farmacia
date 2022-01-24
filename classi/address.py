@@ -1,4 +1,5 @@
 from classi.fun import is_obj,scorri_lista,search
+from classi.persistenza import persistence_factory, persistenza
 
 class Address:
     id = 0
@@ -10,6 +11,7 @@ class Address:
     country = ""
     other_address_details = ""
     all_item = []
+    p = persistence_factory()
 
     def __init__(self,last_id,via,number,city,postcode,province,country,other_address_details):
         self.id = last_id + 1 
