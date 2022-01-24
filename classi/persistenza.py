@@ -44,6 +44,7 @@ class db(persistenza):
 class persistence_factory:
 
     def get_persistance(self, persistence_type):
+        pers_obj = None
         if persistence_type == "db":
-            pass
+            pers_obj = db()
 
