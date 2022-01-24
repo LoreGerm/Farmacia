@@ -62,7 +62,7 @@ def search(value,indice_dict):
     return False
 '''
 
-# TEST ##############################
+# CERCA SE ESISTE (FILE PER OGNI CLASSE?)
 def search(obj):
     far = obj.get_all_item()
     for i in far:
