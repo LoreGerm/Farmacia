@@ -1,15 +1,15 @@
 from classi.fun import is_obj,scorri_lista,search
 
 class Address:
-    id = 0
-    via = ""
-    number = 0
-    city = ""
-    postcode = 0
-    province = ""
-    country = ""
-    other_address_details = ""
-    all_item = []
+    _id = 0
+    _via = ""
+    _number = 0
+    _city = ""
+    _postcode = 0
+    _province = ""
+    _country = ""
+    _other_address_details = ""
+    _all_item = []
 
     def __init__(self,last_id,via,number,city,postcode,province,country,other_address_details):
         self.id = last_id + 1 

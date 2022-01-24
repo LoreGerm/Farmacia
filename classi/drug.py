@@ -2,16 +2,16 @@ from classi.fun import is_obj,scorri_lista,search
 
 
 class Drug_and_Medication:
-    id = 0
-    name = ""
-    cost = 0
-    available_date = ""
-    withdraw_date = ""
-    description = ""
-    generic_yn = ""
-    generic_equivalent_drug_id = ""
-    other_details = ""
-    all_item = []
+    _id = 0
+    _name = ""
+    _cost = 0
+    _available_date = ""
+    _withdraw_date = ""
+    _description = ""
+    _generic_yn = ""
+    _generic_equivalent_drug_id = ""
+    _other_details = ""
+    _all_item = []
 
     def __init__(self,last_id,name,cost,available_date,withdraw_date,description,generic_yn,generic_equivalent_drug_id,other_details):
         self.id = last_id + 1
@@ -96,11 +96,11 @@ class Drug_and_Medication:
 
 
 class Drug_company:
-    id = 0
-    name = ""
-    details = ""
-    drugs = []  # OBJ Drug_and_Medication
-    all_item = []
+    _id = 0
+    _name = ""
+    _details = ""
+    _drugs = []  # OBJ Drug_and_Medication
+    _all_item = []
 
     def __init__(self,last_id,name,details,drugs):
         self.id = last_id + 1

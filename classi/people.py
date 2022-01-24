@@ -3,11 +3,11 @@ from classi.prescription import Credit_card, Prescription
 from classi.fun import is_obj,search
 
 class Physician:
-    id = 0
-    address = None   # OBJ Address
-    prescription = []   # OBJ Prescription
-    physician_details = ""
-    all_item = []
+    _id = 0
+    _address = None   # OBJ Address
+    _prescription = []   # OBJ Prescription
+    _physician_details = ""
+    _all_item = []
 
     def __init__(self,last_id,address,prescription,physician_details):
         self.physician_details = physician_details
@@ -70,15 +70,15 @@ class Physician:
 
 
 class Customer:
-    id = 0
-    address = None  # OBJ Address
-    prescription = []   # OBJ Prescription
-    credit_card = None    # OBJ Credit_card
-    name = ""
-    surname = ""
-    date_became_customer = ""
-    other_customer_details = ""
-    all_item = []
+    _id = 0
+    _address = None  # OBJ Address
+    _prescription = []   # OBJ Prescription
+    _credit_card = None    # OBJ Credit_card
+    _name = ""
+    _surname = ""
+    _date_became_customer = ""
+    _other_customer_details = ""
+    _all_item = []
 
     def __init__(self,last_id,address,prescription,credit_card,name,surname,date_became_customer,other_customer_details):
         self.id = last_id + 1
