@@ -1,12 +1,34 @@
 import json
+from time import process_time_ns
 from classi.address import Address
 from classi.drug import Drug_and_Medication,Drug_company
 from classi.fun import *
 from classi.people import Physician
 from classi.prescription import Prescription
+from classi.persistenza import persistenza
 
 
-###################### FILE PER OGNI CLASSE? #######################
+a = Address(0,0,0,0,0,0,0,0)
+
+print(a.p.get_persistance("file").save())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+
 
 farmacia = "farmacia.txt"
 
@@ -35,7 +57,14 @@ add(dc2)
 
 
 
-'''
+
+
+
+
+
+
+
+
 if dc2.get_all_item()[1] == dc2.get_all_item()[1]:
     print(True)
 
