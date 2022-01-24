@@ -4,84 +4,84 @@ from classi.fun import is_obj,search
 
 
 class Prescription():
-    id = 0
-    payment_method = None   # OBJ Ref_Payment_Methods
-    status = None    # OBJ Ref_Prescription_Status
-    item = []     # OBJ Prescription_items
-    issued_date = ""
-    filled_date = ""
-    other_details = ""
-    all_item = []
+    _id = 0
+    _payment_method = None   # OBJ Ref_Payment_Methods
+    _status = None    # OBJ Ref_Prescription_Status
+    _item = []     # OBJ Prescription_items
+    _issued_date = ""
+    _filled_date = ""
+    _other_details = ""
+    _all_item = []
 
-    def __init__(self,last_id,payment_method,status,item,issued_date,filled_date,other_details):
-        self.id = last_id + 1
-        self.payment_method = is_obj(payment_method,Ref_Payment_Methods)
-        self.status = is_obj(status,Ref_Prescription_Status)
+    def __init__(self,last_id,_payment_method,_status,_item,_issued_date,_filled_date,_other_details):
+        self._id = last_id + 1
+        self._payment_method = is_obj(_payment_method,Ref_Payment_Methods)
+        self._status = is_obj(_status,Ref_Prescription_Status)
         if self.get_item() == []:
-            if isinstance(item,list):
-                self.item = is_obj(item,Prescription_items)
+            if isinstance(_item,list):
+                self._item = is_obj(_item,Prescription_items)
             else:
-                self.item = [is_obj(item,Prescription_items)]
+                self._item = [is_obj(_item,Prescription_items)]
         else:
-            self.item.append(is_obj(item,Prescription_items))
-        self.issued_date = issued_date
-        self.filled_date = filled_date
-        self.other_details = other_details
-        if self.all_item == []:
-            self.all_item.append(self.model_to_dict())
+            self._item.append(is_obj(_item,Prescription_items))
+        self._issued_date = _issued_date
+        self._filled_date = _filled_date
+        self._other_details = _other_details
+        if self._all_item == []:
+            self._all_item.append(self.model_to_dict())
         else:
             assert search(self) == False, f"L'oggetto esiste"
-            self.all_item.append(self.model_to_dict())
+            self._all_item.append(self.model_to_dict())
 
     def get_all_item(self):
-        return self.all_item
+        return self._all_item
 
     def get_payment_method(self):
-        return self.payment_method
-    def set_payment_method(self,payment_method):
-        self.payment_method = is_obj(payment_method,Ref_Payment_Methods)
+        return self._payment_method
+    def set_payment_method(self,_payment_method):
+        self._payment_method = is_obj(_payment_method,Ref_Payment_Methods)
     
     def get_status(self):
-        return self.status
-    def set_status(self,status):
-        self.status = is_obj(status,Ref_Prescription_Status)
+        return self._status
+    def set_status(self,_status):
+        self._status = is_obj(_status,Ref_Prescription_Status)
         
     def get_item(self):
-        return self.item
-    def set_item(self,item):
+        return self._item
+    def set_item(self,_item):
         if self.get_item() == []:
-            if isinstance(item,list):
-                self.item = is_obj(item,Prescription_items)
+            if isinstance(_item,list):
+                self._item = is_obj(_item,Prescription_items)
             else:
-                self.item = [is_obj(item,Prescription_items)]
+                self._item = [is_obj(_item,Prescription_items)]
         else:
-            self.item.append(is_obj(item,Prescription_items))
+            self._item.append(is_obj(_item,Prescription_items))
 
     def get_id(self):
-        return self.id
+        return self._id
     def set_id(self,last_id):
-        self.id = last_id + 1
+        self._id = last_id + 1
 
     def get_issued_date(self):
-            return self.issued_date
-    def set_issued_date(self,issued_date):
-        self.issued_date = issued_date
+            return self._issued_date
+    def set_issued_date(self,_issued_date):
+        self._issued_date = _issued_date
 
     def get_filled_date(self):
-            return self.filled_date
-    def set_filled_date(self,filled_date):
-        self.filled_date = filled_date
+            return self._filled_date
+    def set_filled_date(self,_filled_date):
+        self._filled_date = _filled_date
 
     def get_other_details(self):
-            return self.other_details
-    def set_other_details(self,other_details):
-        self.other_details = other_details
+            return self._other_details
+    def set_other_details(self,_other_details):
+        self._other_details = _other_details
 
     def model_to_dict(self):
         d = {
-            "id": self.get_id(), 
-            "item": self.get_item(),                   
-            "status": self.get_status().model_to_dict(),
+            "_id": self.get_id(), 
+            "_item": self.get_item(),                   
+            "_status": self.get_status().model_to_dict(),
             "payment method": self.get_payment_method().model_to_dict(),
             "issued date": self.get_issued_date(),
             "filled date": self.get_filled_date(),
@@ -92,14 +92,14 @@ class Prescription():
 
 
 class Prescription_items:
-    id = 0
+    _id = 0
     drug = []    # OBJ Drug_and_Medication
     quantity = 0
     instruction_to_customers = ""
-    all_item = []
+    _all_item = []
 
     def __init__(self,last_id,drug,quantity,instruction_to_customers):
-        self.id = last_id + 1
+        self._id = last_id + 1
         if self.get_drug() == []:
             if isinstance(drug,Drug_and_Medication):
                 self.drug = is_obj(drug,Drug_and_Medication)
@@ -109,20 +109,20 @@ class Prescription_items:
             self.drug.append(is_obj(drug,Drug_and_Medication))
         self.quantity = quantity
         self.instruction_to_customers = instruction_to_customers
-        if self.all_item == []:
-            self.all_item.append(self.model_to_dict())
+        if self._all_item == []:
+            self._all_item.append(self.model_to_dict())
         else:
             assert search(self) == False, f"L'oggetto esiste"
-            self.all_item.append(self.model_to_dict())
+            self._all_item.append(self.model_to_dict())
 
 
     def get_all_item(self):
-        return self.all_item
+        return self._all_item
 
     def get_id(self):
-        return self.id
+        return self._id
     def set_id(self,last_id):
-        self.id = last_id + 1
+        self._id = last_id + 1
 
     def get_quantity(self):
             return self.quantity
@@ -147,7 +147,7 @@ class Prescription_items:
 
     def model_to_dict(self):
         d = {
-            "id": self.get_id(),
+            "_id": self.get_id(),
             "drug": self.get_drug(),
             "quantity": self.get_quantity(),
             "indtruction to customers": self.get_instruction_to_customers()
@@ -157,27 +157,27 @@ class Prescription_items:
 
 
 class Ref_Payment_Methods:
-    id = 0
+    _id = 0
     descriptio = ""
-    all_item = []
+    _all_item = []
 
     def __init__(self,last_id,description):
-        self.id = last_id + 1
+        self._id = last_id + 1
         self.descriptio = description
-        if self.all_item == []:
-            self.all_item.append(self.model_to_dict())
+        if self._all_item == []:
+            self._all_item.append(self.model_to_dict())
         else:
             assert search(self) == False, f"L'oggetto esiste"
-            self.all_item.append(self.model_to_dict())
+            self._all_item.append(self.model_to_dict())
 
 
     def get_all_item(self):
-        return self.all_item
+        return self._all_item
 
     def get_id(self):
-        return self.id
+        return self._id
     def set_id(self,last_id):
-        self.id = last_id + 1
+        self._id = last_id + 1
 
     def get_description(self):
         return self.description
@@ -186,7 +186,7 @@ class Ref_Payment_Methods:
 
     def model_to_dict(self):
         d = {
-            "id": self.get_id(),
+            "_id": self.get_id(),
             "description": self.get_description()
         }
         return d
@@ -246,27 +246,27 @@ class Credit_card(Ref_Payment_Methods):
 
 
 class Ref_Prescription_Status:
-    id = 0
+    _id = 0
     description = ""
-    all_item = []
+    _all_item = []
 
     def __init__(self,last_id,description):
-        self.id = last_id + 1
+        self._id = last_id + 1
         self.description = description
-        if self.all_item == []:
-            self.all_item.append(self.model_to_dict())
+        if self._all_item == []:
+            self._all_item.append(self.model_to_dict())
         else:
             assert search(self) == False, f"L'oggetto esiste"
-            self.all_item.append(self.model_to_dict())
+            self._all_item.append(self.model_to_dict())
 
 
     def get_all_item(self):
-        return self.all_item
+        return self._all_item
 
     def get_id(self):
-        return self.id
+        return self._id
     def set_id(self,last_id):
-        self.id = last_id + 1
+        self._id = last_id + 1
 
     def get_description(self):
         return self.description
@@ -275,7 +275,7 @@ class Ref_Prescription_Status:
 
     def model_to_dict(self):
         d = {
-            "id": self.get_id(),
+            "_id": self.get_id(),
             "description": self.get_description()
         }
         return d
