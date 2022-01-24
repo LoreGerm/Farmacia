@@ -6,6 +6,7 @@ from classi.people import Physician
 from classi.prescription import Prescription
 
 
+###################### FILE PER OGNI CLASSE? #######################
 
 farmacia = "farmacia.txt"
 
