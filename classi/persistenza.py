@@ -15,7 +15,6 @@ class persistenza:
 
 class file(persistenza):
     _name = "farmacia.txt"
-    _size_far = 0
 
     def __init__(self, name="farmacia.txt"):
         self._name = name
@@ -31,15 +30,20 @@ class file(persistenza):
 
 
 class ram(persistenza):
-    pass
+    
+    def save(self, obj):
+        pass
 
 
 class db(persistenza):
-    pass
+    
+    def save(self, obj):
+        pass
 
 
 class persistence_factory:
 
     def get_persistance(self, persistence_type):
-        pass
+        if persistence_type == "db":
+            pass
 
