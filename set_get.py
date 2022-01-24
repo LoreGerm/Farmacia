@@ -30,7 +30,7 @@ add(dc2)
 
 
 
-print(dc.get_all_item())
+#print(json.loads(stampa(farmacia)))
 #print(dm.get_all_item())
 
 
