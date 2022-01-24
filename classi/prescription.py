@@ -1,6 +1,6 @@
 from multiprocessing.sharedctypes import Value
 from classi.drug import Drug_and_Medication
-from classi.fun import is_obj
+from classi.fun import is_obj,search
 
 
 class Prescription():
@@ -27,8 +27,11 @@ class Prescription():
         self.issued_date = issued_date
         self.filled_date = filled_date
         self.other_details = other_details
-        self.all_item.append(self.model_to_dict())
-
+        if self.all_item == []:
+            self.all_item.append(self.model_to_dict())
+        else:
+            assert search(self) == False, f"L'oggetto esiste"
+            self.all_item.append(self.model_to_dict())
 
     def get_all_item(self):
         return self.all_item
@@ -106,7 +109,11 @@ class Prescription_items:
             self.drug.append(is_obj(drug,Drug_and_Medication))
         self.quantity = quantity
         self.instruction_to_customers = instruction_to_customers
-        self.all_item.append(self.model_to_dict())
+        if self.all_item == []:
+            self.all_item.append(self.model_to_dict())
+        else:
+            assert search(self) == False, f"L'oggetto esiste"
+            self.all_item.append(self.model_to_dict())
 
 
     def get_all_item(self):
@@ -157,7 +164,11 @@ class Ref_Payment_Methods:
     def __init__(self,last_id,description):
         self.id = last_id + 1
         self.descriptio = description
-        self.all_item.append(self.model_to_dict())
+        if self.all_item == []:
+            self.all_item.append(self.model_to_dict())
+        else:
+            assert search(self) == False, f"L'oggetto esiste"
+            self.all_item.append(self.model_to_dict())
 
 
     def get_all_item(self):
@@ -242,7 +253,11 @@ class Ref_Prescription_Status:
     def __init__(self,last_id,description):
         self.id = last_id + 1
         self.description = description
-        self.all_item.append(self.model_to_dict())
+        if self.all_item == []:
+            self.all_item.append(self.model_to_dict())
+        else:
+            assert search(self) == False, f"L'oggetto esiste"
+            self.all_item.append(self.model_to_dict())
 
 
     def get_all_item(self):

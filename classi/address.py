@@ -1,4 +1,4 @@
-
+from classi.fun import is_obj,scorri_lista,search
 
 class Address:
     id = 0
@@ -20,8 +20,13 @@ class Address:
         self.province = province
         self.country = country
         self.other_address_details = other_address_details
-        self.all_item.append(self.model_to_dict())
+        if self.all_item == []:
+            self.all_item.append(self.model_to_dict())
+        else:
+            assert search(self) == False, f"L'oggetto esiste"
+            self.all_item.append(self.model_to_dict())
 
+            
 
     def get_all_item(self):
         return self.all_item
