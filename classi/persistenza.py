@@ -34,5 +34,5 @@ class persistence_factory:
         elif persistence_type == "ram":
             pers_obj = ram()
 
-
+        return pers_obj
 

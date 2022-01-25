@@ -5,12 +5,18 @@ from classi.drug import Drug_and_Medication,Drug_company
 from classi.fun import *
 from classi.people import Physician
 from classi.prescription import Prescription
-from classi.persistenza import persistenza
+from classi.persistenza import db, persistenza
 
 
 a = Address(0,0,0,0,0,0,0,0)
 
-print(a.p.get_persistance("file").save())
+#print(a.p.get_persistance("db").save())
+
+obj = a.p.get_persistance("file")
+
+obj.save()
+
+
 
 
 
