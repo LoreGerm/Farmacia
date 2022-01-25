@@ -1,3 +1,5 @@
+import mysql.connector
+
 class persistenza:
 
     def save(self):
@@ -18,6 +20,16 @@ class ram(persistenza):
 
 
 class db(persistenza):
+    db = mysql.connector.connet(
+        host = "localhost",
+        user = "root",
+        password = "",
+        database = "database"
+    )
+    cursor = db.cursor()
+
+    def __init__(self):
+        self.cursor.execute("IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'DataBase') BEGIN CREATE DATABASE [database]")
     
     def save(self):
         print('Salvo sul database')
