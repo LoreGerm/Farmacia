@@ -24,9 +24,6 @@ print(a.p.get_persistance("file").save())
 
 
 
-
-
-
 '''
 
 
