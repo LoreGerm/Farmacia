@@ -1,3 +1,4 @@
+
 from classi.fun import is_obj,scorri_lista,search
 from classi.persistenza import persistence_factory, persistenza
 
@@ -12,6 +13,7 @@ class Address:
     other_address_details = ""
     all_item = []
     p = persistence_factory()
+    db_table = 'address'
 
     def __init__(self,last_id,via,number,city,postcode,province,country,other_address_details):
         self.id = last_id + 1 
@@ -27,8 +29,9 @@ class Address:
         else:
             assert search(self) == False, f"L'oggetto esiste"
             self.all_item.append(self.model_to_dict())
-
-            
+    
+    def save_on_db(self):
+        self.p.get_persistance("db").save(self,self.db_table)      
 
     def get_all_item(self):
         return self.all_item
@@ -75,14 +78,14 @@ class Address:
 
     def model_to_dict(self):
         d = {
-            "id": self.get_id(),
+            #"id": self.get_id(),
             "via": self.get_via(),
             "number": self.get_number(),
             "city": self.get_city(),
             "postcode": self.get_postcode(),
             "province": self.get_province(),
             "country": self.get_country(),
-            "other details": self.get_other_address_details()
+            "other_details": self.get_other_address_details()
         }
         return d
     

@@ -8,13 +8,25 @@ from classi.prescription import Prescription
 from classi.persistenza import db, persistenza
 
 
-a = Address(0,0,0,0,0,0,0,0)
+a = Address(0,"via ciao","5","Atlantide","112233","ATL","oceano","nessuno")
 
-#print(a.p.get_persistance("db").save())
 
-obj = a.p.get_persistance("file")
+print(a.save_on_db())
 
-obj.save()
+
+
+value = db.value_in_tuple(a)
+print(value)
+
+'''
+value = db.key_in_tuple(obj) + db.value_in_tuple(obj)
+sql = "INSERT INTO address (%s,%s,%s,%s,%s,%s,%s) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+
+
+
+value = db.value_in_tuple(a)
+ql = "INSERT INTO address (via, number, city, postcode, province, country, other_details) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+'''
 
 
 
