@@ -1,7 +1,6 @@
 from classi.address import Address
 from classi.prescription import Credit_card, Prescription
-from classi.fun import is_obj
-
+from classi.fun import is_obj,search
 
 class Physician:
     id = 0
@@ -21,7 +20,11 @@ class Physician:
         else:
             self.prescription.append(is_obj(prescription,Prescription))
         self.address = is_obj(address,Address)
-        self.all_item.append(self.model_to_dict())
+        if self.all_item == []:
+            self.all_item.append(self.model_to_dict())
+        else:
+            assert search(self) == False, f"L'oggetto esiste"
+            self.all_item.append(self.model_to_dict())
 
 
     def get_all_item(self):
@@ -93,7 +96,11 @@ class Customer:
         self.prescription.append(is_obj(prescription,Prescription))
         self.address = is_obj(address,Address) 
         self.credit_card = is_obj(credit_card,Credit_card)
-        self.all_item.append(self.model_to_dict())
+        if self.all_item == []:
+            self.all_item.append(self.model_to_dict())
+        else:
+            assert search(self) == False, f"L'oggetto esiste"
+            self.all_item.append(self.model_to_dict())
 
 
     def get_all_item(self):
