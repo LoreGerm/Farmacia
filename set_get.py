@@ -15,8 +15,6 @@ print(a.save_on_db())
 
 
 
-value = db.value_in_tuple(a)
-print(value)
 
 '''
 value = db.key_in_tuple(obj) + db.value_in_tuple(obj)
@@ -90,6 +88,8 @@ print(p.model_to_dict())
 
 cont = 0
 
+from classi.drug import Drug_and_Medication,Drug_company
+
 for attr in p.__dict__:
     print("\t def get_"+attr+"(self):")
     print("\t\treturn self."+attr)
@@ -100,7 +100,7 @@ for attr in p.__dict__:
         print("\t def set_"+attr+"(self,"+attr+"):")
         print("\t\tself."+attr+" = "+attr)
     print("\n")
-    cont += 1
+
 
 print(cont)
 
