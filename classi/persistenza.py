@@ -31,8 +31,8 @@ class db(persistenza):
 
     def save(self, obj, table_name):
         if table_name == "address":
-            value = db.key_in_tuple(obj) + db.value_in_tuple(obj)
-            sql = "INSERT INTO address (%s,%s,%s,%s,%s,%s,%s) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+            value = db.value_in_tuple(obj)
+            sql = "INSERT INTO address (via, number, city, postcode, province, country, other_details) VALUES (%s,%s,%s,%s,%s,%s,%s)"
             self.cursor.execute(sql, value)
             self.db.commit()
         print('Salvo sul database')
