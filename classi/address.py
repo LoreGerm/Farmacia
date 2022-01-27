@@ -15,8 +15,8 @@ class Address:
     p = persistence_factory()
     db_table = 'address'
 
-    def __init__(self,last_id,via,number,city,postcode,province,country,other_address_details):
-        self.id = last_id + 1 
+    def __init__(self,via,number,city,postcode,province,country,other_address_details):
+        self.id = id(self)
         self.via = via
         self.number = number
         self.city = city
