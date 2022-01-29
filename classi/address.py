@@ -31,7 +31,10 @@ class Address:
             self.all_item.append(self.model_to_dict())
     
     def save_on_db(self):
-        self.p.get_persistance("db").save(self,self.db_table)      
+        self.p.get_persistance("db").save(self,self.db_table)
+
+    def save_on_file(self):
+        self.p.get_persistance("file").save(self)
 
     def get_all_item(self):
         return self.all_item
