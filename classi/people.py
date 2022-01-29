@@ -9,9 +9,9 @@ class Physician:
     physician_details = ""
     all_item = []
 
-    def __init__(self,address,prescription,physician_details):
+    def __init__(self,last_id,address,prescription,physician_details):
         self.physician_details = physician_details
-        self.id = id(self)
+        self.id = last_id + 1
         if self.get_prescription() == []:
             if isinstance(prescription,list):
                 self.prescription = is_obj(prescription,Prescription)
@@ -37,6 +37,8 @@ class Physician:
 
     def get_id(self):
             return self.id
+    def set_id(self,last_id):
+        self.id = last_id + 1
 
     def get_address(self):
         return self.address
@@ -78,8 +80,8 @@ class Customer:
     other_customer_details = ""
     all_item = []
 
-    def __init__(self,address,prescription,credit_card,name,surname,date_became_customer,other_customer_details):
-        self.id = id(self)
+    def __init__(self,last_id,address,prescription,credit_card,name,surname,date_became_customer,other_customer_details):
+        self.id = last_id + 1
         self.name = name
         self.surname = surname
         self.date_became_customer = date_became_customer
@@ -127,6 +129,8 @@ class Customer:
 
     def get_id(self):
         return self.id
+    def set_id(self,last_id):
+        self.id = last_id + 1
 
     def get_name(self):
             return self.name

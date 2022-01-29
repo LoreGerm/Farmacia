@@ -13,8 +13,8 @@ class Drug_and_Medication:
     other_details = ""
     all_item = []
 
-    def __init__(self,name,cost,available_date,withdraw_date,description,generic_yn,generic_equivalent_drug_id,other_details):
-        self.id = id(self)
+    def __init__(self,last_id,name,cost,available_date,withdraw_date,description,generic_yn,generic_equivalent_drug_id,other_details):
+        self.id = last_id + 1
         self.name = name
         self.cost = cost
         self.available_date = available_date
@@ -36,6 +36,8 @@ class Drug_and_Medication:
 
     def get_id(self):
         return self.id
+    def set_id(self,last_id):
+        self.id = last_id + 1
 
     def get_name(self):
             return self.name
@@ -100,8 +102,8 @@ class Drug_company:
     drugs = []  # OBJ Drug_and_Medication
     all_item = []
 
-    def __init__(self,name,details,drugs):
-        self.id = id(self)
+    def __init__(self,last_id,name,details,drugs):
+        self.id = last_id + 1
         self.name = name
         self.details = details
         if self.get_drugs() == []:
@@ -124,6 +126,8 @@ class Drug_company:
 
     def get_id(self):
         return self.id
+    def set_id(self,last_id):
+        self.id = last_id + 1
 
     def get_name(self):
             return self.name

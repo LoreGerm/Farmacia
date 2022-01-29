@@ -1,4 +1,7 @@
 import mysql.connector
+from fun import over_write,stampa
+import json
+import os
 
 
 class persistenza:
@@ -8,10 +11,22 @@ class persistenza:
 
 
 class file(persistenza):
-    _name = 'farmacia.txt'
+    __name = 'farmacia.txt'
+    try:
+        __size_far = os.path.getsize(__name)
+    except:
+        over_write(__name,[])
+        __size_far = os.path.getsize(__name)
 
-    def save(self):
-        print('salva sul file ' + self._name)
+    def save(self,obj):
+        if self.__size_far == 0:
+            far = [obj.model_to_dict()]
+            over_write(self.__name,far)
+        else:
+            far = json.loads(stampa(self.__name))
+            far.append(obj.model_to_dict())
+            over_write(self.__name,far)
+        print('salva sul file ' + self.__name)
 
 
 class ram(persistenza):
@@ -31,8 +46,8 @@ class db(persistenza):
 
     def save(self, obj, table_name):
         if table_name == "address":
-            value = db.value_in_tuple(obj)
-            sql = "INSERT INTO address (via, number, city, postcode, province, country, other_details) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+            value = db.key_in_tuple(obj) + db.value_in_tuple(obj)
+            sql = "INSERT INTO address (%s,%s,%s,%s,%s,%s,%s) VALUES (%s,%s,%s,%s,%s,%s,%s)"
             self.cursor.execute(sql, value)
             self.db.commit()
         print('Salvo sul database')

@@ -13,8 +13,8 @@ class Prescription():
     _other_details = ""
     _all_item = []
 
-    def __init__(self,_payment_method,_status,_item,_issued_date,_filled_date,_other_details):
-        self._id = id(self)
+    def __init__(self,last_id,_payment_method,_status,_item,_issued_date,_filled_date,_other_details):
+        self._id = last_id + 1
         self._payment_method = is_obj(_payment_method,Ref_Payment_Methods)
         self._status = is_obj(_status,Ref_Prescription_Status)
         if self.get_item() == []:
@@ -59,6 +59,8 @@ class Prescription():
 
     def get_id(self):
         return self._id
+    def set_id(self,last_id):
+        self._id = last_id + 1
 
     def get_issued_date(self):
             return self._issued_date
@@ -96,8 +98,8 @@ class Prescription_items:
     instruction_to_customers = ""
     _all_item = []
 
-    def __init__(self,drug,quantity,instruction_to_customers):
-        self._id = id(self)
+    def __init__(self,last_id,drug,quantity,instruction_to_customers):
+        self._id = last_id + 1
         if self.get_drug() == []:
             if isinstance(drug,Drug_and_Medication):
                 self.drug = is_obj(drug,Drug_and_Medication)
@@ -119,6 +121,8 @@ class Prescription_items:
 
     def get_id(self):
         return self._id
+    def set_id(self,last_id):
+        self._id = last_id + 1
 
     def get_quantity(self):
             return self.quantity
@@ -157,8 +161,8 @@ class Ref_Payment_Methods:
     descriptio = ""
     _all_item = []
 
-    def __init__(self,description):
-        self._id = id(self)
+    def __init__(self,last_id,description):
+        self._id = last_id + 1
         self.descriptio = description
         if self._all_item == []:
             self._all_item.append(self.model_to_dict())
@@ -172,6 +176,8 @@ class Ref_Payment_Methods:
 
     def get_id(self):
         return self._id
+    def set_id(self,last_id):
+        self._id = last_id + 1
 
     def get_description(self):
         return self.description
@@ -244,8 +250,8 @@ class Ref_Prescription_Status:
     description = ""
     _all_item = []
 
-    def __init__(self,description):
-        self._id = id(self)
+    def __init__(self,last_id,description):
+        self._id = last_id + 1
         self.description = description
         if self._all_item == []:
             self._all_item.append(self.model_to_dict())
@@ -259,6 +265,8 @@ class Ref_Prescription_Status:
 
     def get_id(self):
         return self._id
+    def set_id(self,last_id):
+        self._id = last_id + 1
 
     def get_description(self):
         return self.description
