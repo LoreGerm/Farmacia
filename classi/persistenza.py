@@ -36,15 +36,17 @@ class ram(persistenza):
 
 
 class db(persistenza):
-    '''
-    db = mysql.connector.connect(
+    
+    def __init__(self):
+        self.db = mysql.connector.connect(
         host = "localhost",
         user = "root",
         password = "",
         database = "farmacia"
-    )
-    cursor = db.cursor()
-'''
+        )
+        self.cursor = self.db.cursor()
+
+
     def save(self, obj, table_name):
         if table_name == "address":
             value = db.value_in_tuple(obj)
