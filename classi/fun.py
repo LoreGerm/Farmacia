@@ -4,7 +4,7 @@ import os
 
 
 farmacia = "farmacia.json"
-cestino = "cestino.txt"
+cestino = "cestino.json"
 
 
 # SRIVI NEL FILE
