@@ -15,8 +15,8 @@ class Address:
     p = persistence_factory()
     db_table = 'address'
 
-    def __init__(self,last_id,via,number,city,postcode,province,country,other_address_details):
-        self.id = last_id + 1 
+    def __init__(self,via,number,city,postcode,province,country,other_address_details):
+        self.id = id(self) 
         self.via = via
         self.number = number
         self.city = city
@@ -40,9 +40,7 @@ class Address:
         return self.all_item
 
     def get_id(self):
-        return self.id      
-    def set_id(self,last_id):   
-        self.id = last_id + 1
+        return self.id
 
     def get_via(self):
             return self.via     
@@ -81,7 +79,7 @@ class Address:
 
     def model_to_dict(self):
         d = {
-            #"id": self.get_id(),
+            "id": self.get_id(),
             "via": self.get_via(),
             "number": self.get_number(),
             "city": self.get_city(),

@@ -1,5 +1,5 @@
 import mysql.connector
-from fun import over_write,stampa
+from classi.fun import over_write,stampa
 import json
 import os
 
@@ -11,7 +11,7 @@ class persistenza:
 
 
 class file(persistenza):
-    __name = 'farmacia.txt'
+    __name = 'farmacia.json'
     try:
         __size_far = os.path.getsize(__name)
     except:
@@ -36,6 +36,7 @@ class ram(persistenza):
 
 
 class db(persistenza):
+    '''
     db = mysql.connector.connect(
         host = "localhost",
         user = "root",
@@ -43,7 +44,7 @@ class db(persistenza):
         database = "farmacia"
     )
     cursor = db.cursor()
-
+'''
     def save(self, obj, table_name):
         if table_name == "address":
             value = db.value_in_tuple(obj)
@@ -56,7 +57,8 @@ class db(persistenza):
     def value_in_tuple(obj):
         value = []
         for i in obj.model_to_dict():
-            value.append(obj.model_to_dict()[i])
+            if i != "id":
+                value.append(obj.model_to_dict()[i])
         value = tuple(value)
         return value
 

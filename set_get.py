@@ -8,15 +8,14 @@ from classi.prescription import Prescription
 from classi.persistenza import db, persistenza
 
 
-a = Address(0,"via ciao","5","Atlantide","112233","ATL","oceano","nessuno")
+a = Address("via ciao","5","Atlantide","112233","ATL","oceano","nessuno")
 
 
-print(a.save_on_db())
+print(a.save_on_file())
 
 
 
-value = db.value_in_tuple(a)
-print(value)
+
 
 '''
 value = db.key_in_tuple(obj) + db.value_in_tuple(obj)

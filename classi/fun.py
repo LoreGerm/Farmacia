@@ -3,7 +3,7 @@ import os
 
 
 
-farmacia = "farmacia.txt"
+farmacia = "farmacia.json"
 cestino = "cestino.txt"
 
 
