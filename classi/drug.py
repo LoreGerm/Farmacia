@@ -40,6 +40,7 @@ class Drug_and_Medication:
     def get_all_item(self):
         return self.all_item
 
+
     def get_id(self):
         return self.id
 
@@ -128,6 +129,7 @@ class Drug_company:
     
     def save_on_file(self):
         self.p.get_persistance("file").save(self,self.file)
+        self.p.get_persistance('file').save(self.drugs,self.drugs[0].file)
     
 
     def get_all_item(self):
