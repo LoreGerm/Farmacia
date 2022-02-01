@@ -17,6 +17,7 @@ dm1 = Drug_and_Medication(0,0,0,0,0,0,0,0)
 d = [dm,dm1]
 
 dc = Drug_company(0,0,d)
+dc.save_on_file()
 
 print(dc.model_to_dict())
 

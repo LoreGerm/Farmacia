@@ -1,5 +1,5 @@
 import mysql.connector
-from classi.fun import over_write,stampa,farmacia
+from classi.fun import over_write,stampa
 import json
 import os
 
@@ -11,7 +11,6 @@ class persistenza:
 
 
 class file(persistenza):
-    __name = farmacia
     
     def save(self,obj,file):
         try:
@@ -24,7 +23,7 @@ class file(persistenza):
             far = [obj.model_to_dict()]
             over_write(file,far)
         else:
-            far = json.loads(stampa(self.file))
+            far = json.loads(stampa(file))
             far.append(obj.model_to_dict())
             over_write(file,far)
         print('salva sul file ' + file)

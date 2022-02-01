@@ -3,7 +3,6 @@ import os
 
 
 
-farmacia = "classi/file/farmacia.json"
 cestino = "classi/file/cestino.json"
 
 
@@ -15,12 +14,9 @@ def over_write(file_name,ru):
 
 
 try:
-    size_far = os.path.getsize(farmacia)
     size_cess = os.path.getsize(cestino)
 except:
-    over_write(farmacia,[])
     over_write(cestino,[])
-    size_far = os.path.getsize(farmacia)
     size_cess = os.path.getsize(cestino)
 
 
@@ -70,18 +66,7 @@ def search(obj):
             return True
     return False
 
-
-
-# AGGIUNGI L'OBJ AL FILE FARMACIA.TXT  (IL FILE SE VUOTO DEVE AVERE LE [])
-def add(obj):
-    if size_far == 0:
-        far = [obj.model_to_dict()]
-        over_write(farmacia,far)
-    else:
-        far = json.loads(stampa(farmacia))
-        far.append(obj.model_to_dict())
-        over_write(farmacia,far)
-
+'''
 
 # ELIMINA L'INTERO FILE FARMACIA.TXT
 def reset():
@@ -94,7 +79,7 @@ def reset():
         over_write(cestino,ces)
         over_write(farmacia,[])
 
-
+'''
 ############################################ FINIRE
 def create(obj):
     for attr in obj.__dict__ - 1:
