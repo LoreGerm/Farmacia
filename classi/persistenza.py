@@ -1,5 +1,5 @@
 import mysql.connector
-from classi.fun import over_write,stampa
+from classi.fun import over_write,stampa,farmacia
 import json
 import os
 
@@ -11,7 +11,7 @@ class persistenza:
 
 
 class file(persistenza):
-    __name = 'farmacia.json'
+    __name = farmacia
     try:
         __size_far = os.path.getsize(__name)
     except:

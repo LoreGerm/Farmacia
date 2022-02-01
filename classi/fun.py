@@ -3,8 +3,8 @@ import os
 
 
 
-farmacia = "farmacia.json"
-cestino = "cestino.json"
+farmacia = "file/farmacia.json"
+cestino = "file/cestino.json"
 
 
 # SRIVI NEL FILE
@@ -41,7 +41,7 @@ def is_obj(obj,type):
 def scorri_lista(list):
     a = []
     for i in list:
-        a.append(i.model_to_dict())
+        a.append(i.get_id())
     return a
 
 

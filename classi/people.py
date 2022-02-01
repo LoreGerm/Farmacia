@@ -1,6 +1,6 @@
 from classi.address import Address
 from classi.prescription import Credit_card, Prescription
-from classi.fun import is_obj,search
+from classi.fun import is_obj,search,scorri_lista
 
 class Physician:
     id = 0
@@ -9,9 +9,9 @@ class Physician:
     physician_details = ""
     all_item = []
 
-    def __init__(self,last_id,address,prescription,physician_details):
+    def __init__(self,address,prescription,physician_details):
         self.physician_details = physician_details
-        self.id = last_id + 1
+        self.id = id(self)
         if self.get_prescription() == []:
             if isinstance(prescription,list):
                 self.prescription = is_obj(prescription,Prescription)
@@ -36,9 +36,8 @@ class Physician:
         self.physician_details = physician_details
 
     def get_id(self):
-            return self.id
-    def set_id(self,last_id):
-        self.id = last_id + 1
+        return self.id
+
 
     def get_address(self):
         return self.address
@@ -59,9 +58,9 @@ class Physician:
     def model_to_dict(self):
         d = {
             "id": self.get_id(),
-            "address": self.get_address().model_to_dict(),         
+            "address": self.get_address().get_id(),         
             "prescription": self.get_prescription(),
-            "details": self.get_physician_details()
+            "details": scorri_lista(self.get_physician_details())
         }
         return d
 
@@ -80,8 +79,8 @@ class Customer:
     other_customer_details = ""
     all_item = []
 
-    def __init__(self,last_id,address,prescription,credit_card,name,surname,date_became_customer,other_customer_details):
-        self.id = last_id + 1
+    def __init__(self,address,prescription,credit_card,name,surname,date_became_customer,other_customer_details):
+        self.id = id(self)
         self.name = name
         self.surname = surname
         self.date_became_customer = date_became_customer
@@ -129,8 +128,7 @@ class Customer:
 
     def get_id(self):
         return self.id
-    def set_id(self,last_id):
-        self.id = last_id + 1
+
 
     def get_name(self):
             return self.name
@@ -157,10 +155,10 @@ class Customer:
             "id": self.get_id(),
             "name": self.get_name(),
             "surname": self.get_surname(),
-            "address": self.get_address().model_to_dict(), 
-            "prescription": self.get_prescription(),
+            "address": self.get_address().get_id(), 
+            "prescription": scorri_lista(self.get_prescription()),
             "date became customers": self.get_date_became_customer(),
-            "credit card": self.get_credit_card().model_to_dict(),     
+            "credit card": self.get_credit_card().get_id(),     
             "other details": self.get_other_customer_details()
         }
         return d

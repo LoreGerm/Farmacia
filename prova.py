@@ -10,8 +10,15 @@ from classi.persistenza import db, persistenza
 
 a = Address("via ciao","5","Atlantide","112233","ATL","oceano","nessuno")
 
+a.save_on_file()
 
-print(a.save_on_file())
+dm = Drug_and_Medication(0,0,0,0,0,0,0,0)
+dm1 = Drug_and_Medication(0,0,0,0,0,0,0,0)
+d = [dm,dm1]
+
+dc = Drug_company(0,0,d)
+
+print(dc.model_to_dict())
 
 
 
