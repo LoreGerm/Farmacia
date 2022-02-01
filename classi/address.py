@@ -14,6 +14,7 @@ class Address:
     all_item = []
     p = persistence_factory()
     db_table = 'address'
+    file = "classi/file/address.json"
 
     def __init__(self,via,number,city,postcode,province,country,other_address_details):
         self.id = id(self) 
@@ -34,7 +35,7 @@ class Address:
         self.p.get_persistance("db").save(self,self.db_table)
 
     def save_on_file(self):
-        self.p.get_persistance("file").save(self)
+        self.p.get_persistance("file").save(self,self.file)
 
     def get_all_item(self):
         return self.all_item

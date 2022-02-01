@@ -1,6 +1,7 @@
 from classi.address import Address
 from classi.prescription import Credit_card, Prescription
 from classi.fun import is_obj,search,scorri_lista
+from classi.persistenza import persistence_factory, persistenza
 
 class Physician:
     id = 0
@@ -8,6 +9,8 @@ class Physician:
     prescription = []   # OBJ Prescription
     physician_details = ""
     all_item = []
+    file = "classi/file/physician.json"
+    p = persistence_factory()
 
     def __init__(self,address,prescription,physician_details):
         self.physician_details = physician_details
@@ -25,6 +28,10 @@ class Physician:
         else:
             assert search(self) == False, f"L'oggetto esiste"
             self.all_item.append(self.model_to_dict())
+
+
+    def save_on_file(self):
+        self.p.get_persistance("file").save(self,self.file)
 
 
     def get_all_item(self):
@@ -78,6 +85,8 @@ class Customer:
     date_became_customer = ""
     other_customer_details = ""
     all_item = []
+    file = "classi/file/customer.json"
+    p = persistence_factory()
 
     def __init__(self,address,prescription,credit_card,name,surname,date_became_customer,other_customer_details):
         self.id = id(self)
@@ -100,6 +109,10 @@ class Customer:
         else:
             assert search(self) == False, f"L'oggetto esiste"
             self.all_item.append(self.model_to_dict())
+
+
+    def save_on_file(self):
+        self.p.get_persistance("file").save(self,self.file)
 
 
     def get_all_item(self):

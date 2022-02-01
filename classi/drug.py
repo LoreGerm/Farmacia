@@ -1,4 +1,5 @@
 from classi.fun import is_obj,scorri_lista,search
+from classi.persistenza import persistence_factory, persistenza
 
 
 class Drug_and_Medication:
@@ -12,6 +13,8 @@ class Drug_and_Medication:
     generic_equivalent_drug_id = ""
     other_details = ""
     all_item = []
+    file = "classi/file/drug_and_medication.json"
+    p = persistence_factory()
 
     def __init__(self,name,cost,available_date,withdraw_date,description,generic_yn,generic_equivalent_drug_id,other_details):
         self.id = id(self)
@@ -29,6 +32,9 @@ class Drug_and_Medication:
             assert search(self) == False, f"L'oggetto esiste"
             self.all_item.append(self.model_to_dict())
 
+
+    def save_on_file(self):
+        self.p.get_persistance("file").save(self,self.file)
             
 
     def get_all_item(self):
@@ -99,6 +105,8 @@ class Drug_company:
     details = ""
     drugs = []  # OBJ Drug_and_Medication
     all_item = []
+    file = "classi/file/drug_company.json"
+    p = persistence_factory()
 
     def __init__(self,name,details,drugs):
         self.id = id(self)
@@ -117,7 +125,10 @@ class Drug_company:
                 assert search(self) == False, f"L'oggetto esiste"
                 self.all_item.append(self.model_to_dict())
 
-            
+    
+    def save_on_file(self):
+        self.p.get_persistance("file").save(self,self.file)
+    
 
     def get_all_item(self):
         return self.all_item

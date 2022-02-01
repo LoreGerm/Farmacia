@@ -1,6 +1,7 @@
 from multiprocessing.sharedctypes import Value
 from classi.drug import Drug_and_Medication
 from classi.fun import is_obj, scorri_lista,search
+from classi.persistenza import persistence_factory, persistenza
 
 
 class Prescription():
@@ -12,6 +13,8 @@ class Prescription():
     _filled_date = ""
     _other_details = ""
     _all_item = []
+    file = "classi/file/prescription.json"
+    p = persistence_factory()
 
     def __init__(self,_payment_method,_status,_item,_issued_date,_filled_date,_other_details):
         self._id = id(self)
@@ -32,6 +35,10 @@ class Prescription():
         else:
             assert search(self) == False, f"L'oggetto esiste"
             self._all_item.append(self.model_to_dict())
+
+
+    def save_on_file(self):
+        self.p.get_persistance("file").save(self,self.file)       
 
     def get_all_item(self):
         return self._all_item
@@ -96,6 +103,9 @@ class Prescription_items:
     quantity = 0
     instruction_to_customers = ""
     _all_item = []
+    file = "classi/file/prescription_items.json"
+    p = persistence_factory()
+
 
     def __init__(self,drug,quantity,instruction_to_customers):
         self._id = id(self)
@@ -113,6 +123,10 @@ class Prescription_items:
         else:
             assert search(self) == False, f"L'oggetto esiste"
             self._all_item.append(self.model_to_dict())
+
+
+    def save_on_file(self):
+        self.p.get_persistance("file").save(self,self.file)
 
 
     def get_all_item(self):
@@ -158,6 +172,8 @@ class Ref_Payment_Methods:
     _id = 0
     descriptio = ""
     _all_item = []
+    file = "classi/file/ref_payment_methods.json"
+    p = persistence_factory()
 
     def __init__(self,description):
         self._id = id(self)
@@ -167,6 +183,10 @@ class Ref_Payment_Methods:
         else:
             assert search(self) == False, f"L'oggetto esiste"
             self._all_item.append(self.model_to_dict())
+
+
+    def save_on_file(self):
+        self.p.get_persistance("file").save(self,self.file)
 
 
     def get_all_item(self):
@@ -246,6 +266,8 @@ class Ref_Prescription_Status:
     _id = 0
     description = ""
     _all_item = []
+    file = "classi/file/ref_prescription_status.json"
+    p = persistence_factory()
 
     def __init__(self,description):
         self._id = id(self)
@@ -256,6 +278,10 @@ class Ref_Prescription_Status:
             assert search(self) == False, f"L'oggetto esiste"
             self._all_item.append(self.model_to_dict())
 
+
+    def save_on_file(self):
+        self.p.get_persistance("file").save(self,self.file)
+        
 
     def get_all_item(self):
         return self._all_item

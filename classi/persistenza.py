@@ -12,21 +12,22 @@ class persistenza:
 
 class file(persistenza):
     __name = farmacia
-    try:
-        __size_far = os.path.getsize(__name)
-    except:
-        over_write(__name,[])
-        __size_far = os.path.getsize(__name)
+    
+    def save(self,obj,file):
+        try:
+            self.__size_far = os.path.getsize(file)
+        except:
+            over_write(file,[])
+            self.__size_far = os.path.getsize(file)
 
-    def save(self,obj):
         if self.__size_far == 0:
             far = [obj.model_to_dict()]
-            over_write(self.__name,far)
+            over_write(file,far)
         else:
-            far = json.loads(stampa(self.__name))
+            far = json.loads(stampa(self.file))
             far.append(obj.model_to_dict())
-            over_write(self.__name,far)
-        print('salva sul file ' + self.__name)
+            over_write(file,far)
+        print('salva sul file ' + file)
 
 
 class ram(persistenza):
