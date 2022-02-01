@@ -3,8 +3,8 @@ import os
 
 
 
-farmacia = "file/farmacia.json"
-cestino = "file/cestino.json"
+farmacia = "classi/file/farmacia.json"
+cestino = "classi/file/cestino.json"
 
 
 # SRIVI NEL FILE
