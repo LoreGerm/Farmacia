@@ -22,7 +22,7 @@ class file(persistenza):
         if isinstance(obj,list):
             if self.__size_file == 0:
                 far = [obj[0].model_to_dict()]
-                for i in range(1,len(obj)):          ############# ERROR #############
+                for i in range(1,len(obj)):    
                     far.append(obj[i].model_to_dict())
                 over_write(file,far)
             else:
