@@ -14,23 +14,24 @@ class file(persistenza):
     
     def save(self,obj,file):
         try:
-            self.__size_far = os.path.getsize(file)
+            self.__size_file = os.path.getsize(file)
         except:
             over_write(file,[])
-            self.__size_far = os.path.getsize(file)
+            self.__size_file = os.path.getsize(file)
+
         if isinstance(obj,list):
-            if self.__size_far == 0:
+            if self.__size_file == 0:
                 far = [obj[0].model_to_dict()]
-                for i in range(1,obj):          ############# ERROR #############
+                for i in range(1,len(obj)):          ############# ERROR #############
                     far.append(obj[i].model_to_dict())
                 over_write(file,far)
             else:
                 far = json.loads(stampa(file))
-                for i in range(obj):
+                for i in range(len(obj)):
                     far.append(obj[i].model_to_dict())
                 over_write(file,far)
         else:
-            if self.__size_far == 0:
+            if self.__size_file == 0:
                 far = [obj.model_to_dict()]
                 over_write(file,far)
             else:

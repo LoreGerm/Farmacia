@@ -10,7 +10,7 @@ from classi.persistenza import db, persistenza
 
 a = Address("via ciao","5","Atlantide","112233","ATL","oceano","nessuno")
 
-a.save_on_file()
+#a.save_on_file()
 
 dm = Drug_and_Medication(0,0,0,0,0,0,0,0)
 dm1 = Drug_and_Medication(0,0,0,0,0,0,0,0)
